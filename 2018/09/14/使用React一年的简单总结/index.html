@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>使用React一年的简单总结 | 启码匠 - 磨刀霍霍向编程</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="从2017年9月开始我转为前端开发，当时公司没有一个单纯专注前端的开发人员，我接到任务后首先是考虑的是应该使用哪种前端技术（框架）。在简单对比Angular、Vue 和 React 后，我选择了 React。因为我曾经花了时间了解过，而且我特别喜欢 React 的 JSX 语法和单向数据流绑定方式。本文就简单总结一下这一年我使用 React 的实际经验。">
+<meta name="keywords" content="React,总结,Webpack,Babel">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用React一年的简单总结">
+<meta property="og:url" content="https://qimajiang.com/2018/09/14/使用React一年的简单总结/index.html">
+<meta property="og:site_name" content="启码匠 - 磨刀霍霍向编程">
+<meta property="og:description" content="从2017年9月开始我转为前端开发，当时公司没有一个单纯专注前端的开发人员，我接到任务后首先是考虑的是应该使用哪种前端技术（框架）。在简单对比Angular、Vue 和 React 后，我选择了 React。因为我曾经花了时间了解过，而且我特别喜欢 React 的 JSX 语法和单向数据流绑定方式。本文就简单总结一下这一年我使用 React 的实际经验。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-31T07:40:43.361Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用React一年的简单总结">
+<meta name="twitter:description" content="从2017年9月开始我转为前端开发，当时公司没有一个单纯专注前端的开发人员，我接到任务后首先是考虑的是应该使用哪种前端技术（框架）。在简单对比Angular、Vue 和 React 后，我选择了 React。因为我曾经花了时间了解过，而且我特别喜欢 React 的 JSX 语法和单向数据流绑定方式。本文就简单总结一下这一年我使用 React 的实际经验。">
+  
+    <link rel="alternative" href="/atom.xml" title="启码匠 - 磨刀霍霍向编程" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet">
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: true
+      }
+  </script>
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.png" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">启码匠</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">磨刀霍霍向编程</p>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="search" placeholder=" Search...">
+            </form>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/Home">博客首页</a></li>
+                        
+                            <li><a href="/tags">标签云</a></li>
+                        
+                            <li><a href="/about">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="mailto:&#109;&#120;&#120;&#48;&#56;&#48;&#55;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/moxun33" title="github">github</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Babel/" style="font-size: 10px;">Babel</a> <a href="/tags/Clover/" style="font-size: 10px;">Clover</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/ESLint/" style="font-size: 10px;">ESLint</a> <a href="/tags/Goutte/" style="font-size: 10px;">Goutte</a> <a href="/tags/Homestead/" style="font-size: 10px;">Homestead</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/LAMP/" style="font-size: 10px;">LAMP</a> <a href="/tags/MAC-OSX86/" style="font-size: 10px;">MAC OSX86</a> <a href="/tags/Object-C/" style="font-size: 10px;">Object C</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/PHP/" style="font-size: 18px;">PHP</a> <a href="/tags/PHP7/" style="font-size: 10px;">PHP7</a> <a href="/tags/PostgreSQL/" style="font-size: 10px;">PostgreSQL</a> <a href="/tags/Prettier/" style="font-size: 10px;">Prettier</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/SVG/" style="font-size: 10px;">SVG</a> <a href="/tags/ThinkPHP/" style="font-size: 10px;">ThinkPHP</a> <a href="/tags/TypeScript/" style="font-size: 12px;">TypeScript</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/U盘/" style="font-size: 10px;">U盘</a> <a href="/tags/Vagrant/" style="font-size: 10px;">Vagrant</a> <a href="/tags/Webpack/" style="font-size: 10px;">Webpack</a> <a href="/tags/autossh/" style="font-size: 10px;">autossh</a> <a href="/tags/editor-md/" style="font-size: 10px;">editor.md</a> <a href="/tags/hexo命令/" style="font-size: 10px;">hexo命令</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/mac系统/" style="font-size: 10px;">mac系统</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/ngrok/" style="font-size: 10px;">ngrok</a> <a href="/tags/web/" style="font-size: 14px;">web</a> <a href="/tags/七牛云/" style="font-size: 10px;">七牛云</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/入门指南/" style="font-size: 10px;">入门指南</a> <a href="/tags/内网穿透/" style="font-size: 10px;">内网穿透</a> <a href="/tags/前端/" style="font-size: 16px;">前端</a> <a href="/tags/又拍云/" style="font-size: 10px;">又拍云</a> <a href="/tags/反向代理/" style="font-size: 10px;">反向代理</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/开发环境/" style="font-size: 10px;">开发环境</a> <a href="/tags/微信/" style="font-size: 12px;">微信</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/树莓派-raspberrypi/" style="font-size: 12px;">树莓派 raspberrypi</a> <a href="/tags/浏览器/" style="font-size: 10px;">浏览器</a> <a href="/tags/爬虫/" style="font-size: 14px;">爬虫</a> <a href="/tags/监控/" style="font-size: 10px;">监控</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxun33.github.io/">name</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注后端开发和前端开发，偶尔搞搞 iOS 开发，不会拘泥现有的开发要素，热衷研究新技术(语言)，偶尔写文。</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">启码匠</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">启码匠</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">磨刀霍霍向编程</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/Home">博客首页</a></li>
+                
+                    <li><a href="/tags">标签云</a></li>
+                
+                    <li><a href="/about">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="mailto:&#109;&#120;&#120;&#48;&#56;&#48;&#55;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/moxun33" title="github">github</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-使用React一年的简单总结" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/09/14/使用React一年的简单总结/" class="article-date">
+      <time datetime="2018-09-14T13:05:54.000Z" itemprop="datePublished">2018-09-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      使用React一年的简单总结
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Babel/">Babel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/总结/">总结</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>从2017年9月开始我转为前端开发，当时公司没有一个单纯专注前端的开发人员，我接到任务后首先是考虑的是应该使用哪种前端技术（框架）。在简单对比Angular、Vue 和 React 后，我选择了 React。因为我曾经花了时间了解过，而且我特别喜欢 React 的 JSX 语法和单向数据流绑定方式。本文就简单总结一下这一年我使用 React 的实际经验。<br><a id="more"></a></p>
+<h1 id="一、必须关注React-动态"><a href="#一、必须关注React-动态" class="headerlink" title="一、必须关注React 动态"></a>一、必须关注React 动态</h1><h4 id="我开始使用-React时的版本是16-0-0，到现在16-5-0，我感受到最大的变化是："><a href="#我开始使用-React时的版本是16-0-0，到现在16-5-0，我感受到最大的变化是：" class="headerlink" title="我开始使用  React时的版本是16.0.0，到现在16.5.0，我感受到最大的变化是："></a>我开始使用  React时的版本是16.0.0，到现在16.5.0，我感受到最大的变化是：</h4><p>1、 新增了<code>Context</code>，翻译为：上下文。有了这个 API 我们可以简单的共享组件间的数据。比如：在向多级子组件传 props 时无需每一级组件都要传递 props。在顶级组件创建了<code>Context.Provider</code>,在任何子组件中使用<code>Context.Consumer</code>就可以获取到顶级组件的props。</p>
+<p>2、 多种<code>ref</code>的创建方式。在最初，要访问 DOM ，需要在组件增加<code>ref={myRef}</code>，而且 ref 的值只能是<code>string</code>。到现在，我们不仅可以利用原来的方式创建（旧不被官方推荐），还可以 <code>ref={ins =&gt; this.myRef = ins}</code> ，ref 的值可以是一个函数；当然还可以这样:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyComponent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props);</span><br><span class="line">    <span class="keyword">this</span>.myRef = React.createRef();</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ref</span>=<span class="string">&#123;this.myRef&#125;</span> /&gt;</span>;</span></span><br><span class="line"><span class="xml">  &#125;</span></span><br></pre></td></tr></table></figure>
+<p>3、 在16.3.0版本中，React 组件的生命周期增加了 <code>static getDerivedStateFromProps()</code>,<code>getSnapshotBeforeUpdate()</code>,<code>componentDidCatch()</code>,并且对<code>componentWillReceiveProps()</code>和<code>componentWillUpdate()</code>增加了不安全的前缀，如： <code>UNSAFE_componentWillReceiveProps()</code>。我们这里不展开讨论这些生命周期API改变给我们日常开发带来的影响。</p>
+<p>4、 除了上面列出变化，还有 <code>Fragment</code>、<code>异步渲染</code>等等的改变与变化。在短短一年，React 的变化与改进很大，这也要我们开发者需要时刻关注 React 的动态，养成习惯去 React官网查看每个版本的变化日志，这样才有助于改进我们的应用，能更好的掌握 React。</p>
+<h1 id="二、掌握Babel-和Webpack的配置"><a href="#二、掌握Babel-和Webpack的配置" class="headerlink" title="二、掌握Babel 和Webpack的配置"></a>二、掌握Babel 和Webpack的配置</h1><h4 id="1、Babel-总结"><a href="#1、Babel-总结" class="headerlink" title="1、Babel 总结"></a>1、Babel 总结</h4><p><code>Babel</code> 是现代化前端开发的关键角色，<code>Babel</code> 的存在才使得我们可以用 ES6、ES7，甚至 ES8的新特性来开发前端项目。因为 我们的项目基本是运行在浏览器上的，每个浏览器的 JS 支持情况不一致，当使用<code>Babel</code>把我们的项目代码转译成 ES5，可以最大程度兼容目标浏览器列表。在2017年，<code>Babel</code>的 presets 需要我们手动引入所需要的包，如：<code>babel-preset-latest</code>、<code>babel-preset-react</code>、<code>babel-preset-es2015</code>和<code>babel-preset-stage-0</code>。很多时候我们很难确定我们具体需要哪个包，因为不知我们会在项目中使用什么新特性。<code>babel-preset-env</code>的出现改变这一现象，可以根据我们设置的浏览器列表，按需选择语法环境包。尤其现在 <code>Babel7</code>的发布，使得 <code>Babel</code> 配置更加简单了。</p>
+<h4 id="2、Webpack-总结"><a href="#2、Webpack-总结" class="headerlink" title="2、Webpack 总结"></a>2、Webpack 总结</h4><p><code>Wepack</code>是工程化前端开发的基础。我创建第一个React SPA 项目的时候，没有使用 CRA(create-react-app),因为我当时觉得，既然我刚接触现代前端开发方式，我就要从零开始学习，那当然是从 <code>Webpack</code> 配置开始学习了。<code>Webpack</code>作为现在最流行的打包工具， 但由于其松散的配置方式和插件化配置使得整个 <code>Webpack</code>配置让人看起来十分复杂，因此让很多人望而却步，不敢真正去了解 <code>Webpack</code> 配置项的意义。其实，<code>Webpack</code> 配置没那么难，尤其现在 <code>Webpack4</code>的出现，可以说可以是零配置了。在项目开始的时候，只需要配置入口，出口、css 加载器和 js 加载器就可以项目运行起来了。至于其他的配置，用到的时候再添加也不迟。配置优化更加不能急，项目的完成度没有到达90%，谈优化是多余的。这一年来， 我项目中 Webpack 配置不知改了多少次了，这种东西并不是说开始配置好了就不用再改动了。所以我们一步一步来，就可以慢慢熟悉整个 Webpack 配置的诀窍了。</p>
+<h1 id="三、代码拆分"><a href="#三、代码拆分" class="headerlink" title="三、代码拆分"></a>三、代码拆分</h1><h4 id="1、-React组件拆分"><a href="#1、-React组件拆分" class="headerlink" title="1、 React组件拆分"></a>1、 React组件拆分</h4><p>我特别喜欢<code>React</code>的组件化开发，在开发过程中我们可以重用组件。当一个页面的功能增多时，代码数肯定飙升的。这个时候我们可以考虑把一些功能拆分出来，不仅使得当前文件代码减少，增加可读性，而且说不定当前拆分的小功能组件可以被其他页面重用，减少重复的工作量。不用害怕拆分，哪怕是一个按钮都可以抽取到一个独立的组件中，比如：在我的项目中，我的一个小小的删除按钮就拆分出来，因为每个删除按钮都需要一个弹窗按钮来包裹，每次写按钮功能时，都要重复的用弹窗组件来包裹，拆分一个自定义的删除按钮就让我们每次只需要引用我们的资金的删除按钮即可。当然，组件的拆分可以拆分成无状态组件、正常功能组件，甚至是自定义业务组件库。我在前面的文章写过自建公司内部的 React 业务组件库，因为这些组件不只是可以在当前项目使用，多个项目实行相同的功能时，不断的 copy 也是增加工作量。</p>
+<h4 id="2、逻辑函数拆分"><a href="#2、逻辑函数拆分" class="headerlink" title="2、逻辑函数拆分"></a>2、逻辑函数拆分</h4><p>我们都知道一个函数方法只实现一种功能，一般来说每个页面都是特定的功能，但总会存在相同的数据处理方式。这个时候我们创建一个函数库，把常用的数据处理方法抽取出来，在别的页面使用时就可以简单实现了。比如：在判断值是否有效时，虽然是很简单的方法，但每次都要这样判断 <code>null</code>、<code>undefined</code>以及<code></code>(空串),着实让人感觉麻烦。</p>
+<h4 id="3、常量配置的拆分"><a href="#3、常量配置的拆分" class="headerlink" title="3、常量配置的拆分"></a>3、常量配置的拆分</h4><p>我们做 SPA，接口作为最大的常量配置项，我们必须用单独的文件来声明这些接口，因为不可能一个接口只用在一个地方，当接口路径改变时，我们只需要在接口声明文件中更改一次即可。而且不能模块的接口需要拆分到不同的文件中，增加可读性。还有其他的一些页面配置声明都可以放到统一目录下（constants目录），这样不仅让项目结构更加清晰，而且增加代码的健壮性。</p>
+<h1 id="四、不断的重构、重构"><a href="#四、不断的重构、重构" class="headerlink" title="四、不断的重构、重构"></a>四、不断的重构、重构</h1><p>这一年来，项目功能在不断变化，这样也带来项目代码页不断变化，出来不断拆分代码之外。我们要不断的对每个功能的实现方式不断重构，也行以前需要用10行代码才能解决的问题，现在想到了一个更好的方法，只需要5行了。在我的项目中，我重构最多的是应用的路由，从开始只是使用页面级别的路由，到现在每个组件都使用路由，其中重构的次数不下与10次。也许我一开始就应该考虑这种路由方式了，但当时是一个简单的项目就没必要搞那么复杂吧。并不是我不想这样做，只是必要性太低了。其实重构的过程，也是对代码进行改进的过程，随着开发时间的增加，对代码使用的理解不一样了，重构让我更升入理解了 React 的一些 API。只要我有空， 我就会 review 项目的代码，看看哪些地方可以改进，包括 Babel Webpack 配置的重构。</p>
+<h1 id="五、代码规范和团队协作"><a href="#五、代码规范和团队协作" class="headerlink" title="五、代码规范和团队协作"></a>五、代码规范和团队协作</h1><p>一个好的项目不只是说功能完成了就可以了，除了不断重构之外，在每次的编码过程中注意编码规范还是十分重要的。因为代码是写给人看的，自己看的懂的代码，团队成员不一定能看懂。除了代码需要格式化之外，还需要一定的注释，在逻辑复杂的地方增加一定的注释，方便团队成员和日后自己的 review 代码时能看懂该段代码，也会对优化带来启示的。在 Rect 这样的前端项目中，一般使用 <code>ESLint</code> 进行语法规范、用<code>Prettirer</code>进行代码美化，而且还要对编辑器进行美化编写规则，如<code>.editorconfig</code>,让团队成员的在其编辑器上写出的代码与自己的风格一致。</p>
+<h1 id="六、尝试使用高级特性"><a href="#六、尝试使用高级特性" class="headerlink" title="六、尝试使用高级特性"></a>六、尝试使用高级特性</h1><p>在项目开发开始阶段中，我们因为专注于业务功能的实现，容易忽略一些功能其实可以用高级特性来实现。这就让我们在重构的过程中考虑是否使用高级特性来替代当前的实现逻辑了。使用高级特性不仅让我们的项目代码简洁、还可以让我更好的理解React、JS 的高级特性，这样的项目开发方式才能最大程度提升自己的水平。</p>
+<h1 id="七、使用-TypeScript吧"><a href="#七、使用-TypeScript吧" class="headerlink" title="七、使用 TypeScript吧"></a>七、使用 TypeScript吧</h1><p>由于项目开始时，我对 TypeScript 一无所知，压根没考虑过使用 TypeScript 来实现。对应 TypeScript 的有点和在 React 的使用方式，我在前面的文章有写过。现在我最苦恼的是，我很想使用 TypeScript 来开发，但把现在的项目代码转为 TypeScript 的工作量实在太大了。因此，我们应尽可能在项目使用 TypeScript!!!</p>
+<h1 id="八、解决困难的能力"><a href="#八、解决困难的能力" class="headerlink" title="八、解决困难的能力"></a>八、解决困难的能力</h1><p>我觉得开发是一件很快乐的事情，开发过程遇到困难 首先尝试自己解决，才能提升自己；也不要吝啬帮助别人，也许别人遇到的问题正是自己前不久刚解决的，这样能加深印象。</p>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>本文简单总结了这一年我的 React 开发经验，希望能帮到大家。</p>
+
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+            <div class="shang_tit">
+              <p>纯属好玩</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫">
+            </div>
+              <div class="pay_explain">扫码打赏，你说多少就多少</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝"></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信"></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/09/14/使用React一年的简单总结/">使用React一年的简单总结</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 启码匠 的个人博客">启码匠</a></p>
+        <p><span>发布时间:</span>2018年09月14日 - 21时05分</p>
+        <p><span>最后更新:</span>2018年12月31日 - 15时40分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/09/14/使用React一年的简单总结/" title="使用React一年的简单总结">https://qimajiang.com/2018/09/14/使用React一年的简单总结/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://qimajiang.com/2018/09/14/使用React一年的简单总结/　　作者: 启码匠" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target="_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2018/10/25/浏览器持久化存储那些事/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          浏览器持久化存储那些事
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/08/21/TypeScript开发笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">TypeScript开发笔记</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、必须关注React-动态"><span class="toc-number">1.</span> <span class="toc-text">一、必须关注React 动态</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#我开始使用-React时的版本是16-0-0，到现在16-5-0，我感受到最大的变化是："><span class="toc-number">1.0.0.1.</span> <span class="toc-text">我开始使用  React时的版本是16.0.0，到现在16.5.0，我感受到最大的变化是：</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#二、掌握Babel-和Webpack的配置"><span class="toc-number">2.</span> <span class="toc-text">二、掌握Babel 和Webpack的配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、Babel-总结"><span class="toc-number">2.0.0.1.</span> <span class="toc-text">1、Babel 总结</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、Webpack-总结"><span class="toc-number">2.0.0.2.</span> <span class="toc-text">2、Webpack 总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、代码拆分"><span class="toc-number">3.</span> <span class="toc-text">三、代码拆分</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、-React组件拆分"><span class="toc-number">3.0.0.1.</span> <span class="toc-text">1、 React组件拆分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、逻辑函数拆分"><span class="toc-number">3.0.0.2.</span> <span class="toc-text">2、逻辑函数拆分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、常量配置的拆分"><span class="toc-number">3.0.0.3.</span> <span class="toc-text">3、常量配置的拆分</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、不断的重构、重构"><span class="toc-number">4.</span> <span class="toc-text">四、不断的重构、重构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、代码规范和团队协作"><span class="toc-number">5.</span> <span class="toc-text">五、代码规范和团队协作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#六、尝试使用高级特性"><span class="toc-number">6.</span> <span class="toc-text">六、尝试使用高级特性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#七、使用-TypeScript吧"><span class="toc-number">7.</span> <span class="toc-text">七、使用 TypeScript吧</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#八、解决困难的能力"><span class="toc-number">8.</span> <span class="toc-text">八、解决困难的能力</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#最后"><span class="toc-number">9.</span> <span class="toc-text">最后</span></a></li>
+</div>
+<input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <div id="gitments"></div>
+<script src="/js/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+      id:  '使用React一年的简单总结',
+      owner: 'moxun33',
+      repo: 'moxun33.github.io',
+      oauth: {
+        client_id: 'b7d60b111f8dd152f6f9',
+        client_secret: 'd9e941da2e552874785b833e84f43b7534a7527d',
+      },
+    })
+    gitment.render('gitments')
+</script>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2018/10/25/浏览器持久化存储那些事/" title="上一篇: 浏览器持久化存储那些事">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2018/08/21/TypeScript开发笔记/" title="下一篇: TypeScript开发笔记">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/11/21/React应用优化/">React应用优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/25/浏览器持久化存储那些事/">浏览器持久化存储那些事</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/14/使用React一年的简单总结/">使用React一年的简单总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/21/TypeScript开发笔记/">TypeScript开发笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/28/TypeScript 与 React /">TypeScript 与 React</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/24/使用 Eslint 和 Prettier美化 React 代码/">使用 ESLint、Prettier 和 StyleLint美化 React 代码</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/19/SVG入门与实践/">SVG入门与实践</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/25/搭建前端异常监控服务/">搭建前端异常监控系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/24/构建企业内部React组件库/">构建企业内部React组件库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/10/前端PDF预览那些事/">前端预览PDF那些事</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/28/开发一个美剧自动嗅探下载器-TVDragon-下/">开发一个美剧自动嗅探下载器:TVDragon(下)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/16/开发一个美剧自动嗅探下载器-上-/">开发一个美剧自动嗅探下载器:TVDragon(上)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/18/使用 Goutte爬取代理 IP 池/">使用 Goutte爬取 IP 代理池</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/28/使用Jenkins自动部署React前端项目/">使用Jenkins自动部署React前端项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/21/React开发笔记/">React开发笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/03/mac下使用Vagrant-构建跨平台开发环境/">mac 下使用Vagrant 构建跨平台开发环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/18/web 的几种通信方式/">web 的几种通信方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/08/聊聊-web-中的网络请求/">聊聊 web 中的网络请求</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/13/手把手教你用-PHP-拼接微信好友头像/">手把手教你用 PHP 拼接微信好友头像</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/27/闲谈-PHP7新特性/">闲谈 PHP7新特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/04/使用-ngrok-实现内网穿透/">使用 ngrok 实现内网穿透</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/18/postgresql-数据库笔记/">postgresql 数据库笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/25/PHP工匠历险记-开启篇-一、搭建PHP开发环境/">搭建PHP开发环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/25/树莓派搭建反向代理，实现远程管理/">树莓派搭建反向代理，实现远程管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/21/objective-c初学笔记/">objective-c初学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/20/web-入门必看指南/">web 入门必看指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/20/mac下-搭建Cordova-ionic-AngularJs开发环境/">mac下 搭建Cordova+ionic+AngularJs开发环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/18/树莓派3安装-Docker记录/">树莓派3安装 Docker记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/17/hexo-常用命令/">hexo常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/23/Thinkphp微信支付开发坑/">Thinkphp微信支付开发坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/23/ubuntu64位安装32位依赖库，并安装njit-client/">ubuntu64位安装32位依赖库，并安装njit-client</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/七牛云和又拍云的比较/">七牛云和又拍云的比较</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/MAC环境下用Clover制作原版安装U盘/">MAC环境下用Clover制作原版安装U盘</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/20/editormd/">editormd 的使用介绍</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+        
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2018 启码匠
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+    </div>
+    <script>
+            (function(){
+                var bp = document.createElement('script');
+                var curProtocol = window.location.protocol.split(':')[0];
+                if (curProtocol === 'https') {
+                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+                }
+                else {
+                    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+                }
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(bp, s);
+            })();
+            </script>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 20;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  <script type="text/javascript">
+    window.onload = function(){
+      document.getElementById("search").onclick = function(){
+          console.log("search")
+          search();
+      }
+    }
+    function search(){
+      (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+      (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+      e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+      })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+      _st('install','A1Pz-LKMXbrzcFg2FWi6','2.0.0');
+    }
+  </script>
+
+  </div>
+</body>
+</html>

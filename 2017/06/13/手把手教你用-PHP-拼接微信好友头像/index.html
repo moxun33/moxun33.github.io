@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>手把手教你用 PHP 拼接微信好友头像 | 启码匠 - 磨刀霍霍向编程</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近做个人微信机器人挺热门的， 同时很多人也用来对自己的微信好友做分析和统计， 比如：简单的就是利用微信好友的头像做成一张大图， 让朋友圈的好友都看到彼此， 觉得蛮有意思的! 网上已经有 Python 或 Nodejs 的实现了， 我就想用 PHP 来实现一下。">
+<meta name="keywords" content="PHP,微信">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手把手教你用 PHP 拼接微信好友头像">
+<meta property="og:url" content="https://qimajiang.com/2017/06/13/手把手教你用-PHP-拼接微信好友头像/index.html">
+<meta property="og:site_name" content="启码匠 - 磨刀霍霍向编程">
+<meta property="og:description" content="最近做个人微信机器人挺热门的， 同时很多人也用来对自己的微信好友做分析和统计， 比如：简单的就是利用微信好友的头像做成一张大图， 让朋友圈的好友都看到彼此， 觉得蛮有意思的! 网上已经有 Python 或 Nodejs 的实现了， 我就想用 PHP 来实现一下。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fgfalih389j30b40b40t8.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fgfalhd9z8j30rs0m8acd.jpg">
+<meta property="og:updated_time" content="2018-12-31T07:40:43.378Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="手把手教你用 PHP 拼接微信好友头像">
+<meta name="twitter:description" content="最近做个人微信机器人挺热门的， 同时很多人也用来对自己的微信好友做分析和统计， 比如：简单的就是利用微信好友的头像做成一张大图， 让朋友圈的好友都看到彼此， 觉得蛮有意思的! 网上已经有 Python 或 Nodejs 的实现了， 我就想用 PHP 来实现一下。">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fgfalih389j30b40b40t8.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="启码匠 - 磨刀霍霍向编程" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet">
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: true
+      }
+  </script>
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.png" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">启码匠</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">磨刀霍霍向编程</p>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="search" placeholder=" Search...">
+            </form>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/Home">博客首页</a></li>
+                        
+                            <li><a href="/tags">标签云</a></li>
+                        
+                            <li><a href="/about">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="mailto:&#109;&#120;&#120;&#48;&#56;&#48;&#55;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/moxun33" title="github">github</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Babel/" style="font-size: 10px;">Babel</a> <a href="/tags/Clover/" style="font-size: 10px;">Clover</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/ESLint/" style="font-size: 10px;">ESLint</a> <a href="/tags/Goutte/" style="font-size: 10px;">Goutte</a> <a href="/tags/Homestead/" style="font-size: 10px;">Homestead</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/LAMP/" style="font-size: 10px;">LAMP</a> <a href="/tags/MAC-OSX86/" style="font-size: 10px;">MAC OSX86</a> <a href="/tags/Object-C/" style="font-size: 10px;">Object C</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/PHP/" style="font-size: 18px;">PHP</a> <a href="/tags/PHP7/" style="font-size: 10px;">PHP7</a> <a href="/tags/PostgreSQL/" style="font-size: 10px;">PostgreSQL</a> <a href="/tags/Prettier/" style="font-size: 10px;">Prettier</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/SVG/" style="font-size: 10px;">SVG</a> <a href="/tags/ThinkPHP/" style="font-size: 10px;">ThinkPHP</a> <a href="/tags/TypeScript/" style="font-size: 12px;">TypeScript</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/U盘/" style="font-size: 10px;">U盘</a> <a href="/tags/Vagrant/" style="font-size: 10px;">Vagrant</a> <a href="/tags/Webpack/" style="font-size: 10px;">Webpack</a> <a href="/tags/autossh/" style="font-size: 10px;">autossh</a> <a href="/tags/editor-md/" style="font-size: 10px;">editor.md</a> <a href="/tags/hexo命令/" style="font-size: 10px;">hexo命令</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/mac系统/" style="font-size: 10px;">mac系统</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/ngrok/" style="font-size: 10px;">ngrok</a> <a href="/tags/web/" style="font-size: 14px;">web</a> <a href="/tags/七牛云/" style="font-size: 10px;">七牛云</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/入门指南/" style="font-size: 10px;">入门指南</a> <a href="/tags/内网穿透/" style="font-size: 10px;">内网穿透</a> <a href="/tags/前端/" style="font-size: 16px;">前端</a> <a href="/tags/又拍云/" style="font-size: 10px;">又拍云</a> <a href="/tags/反向代理/" style="font-size: 10px;">反向代理</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/开发环境/" style="font-size: 10px;">开发环境</a> <a href="/tags/微信/" style="font-size: 12px;">微信</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/树莓派-raspberrypi/" style="font-size: 12px;">树莓派 raspberrypi</a> <a href="/tags/浏览器/" style="font-size: 10px;">浏览器</a> <a href="/tags/爬虫/" style="font-size: 14px;">爬虫</a> <a href="/tags/监控/" style="font-size: 10px;">监控</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxun33.github.io/">name</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注后端开发和前端开发，偶尔搞搞 iOS 开发，不会拘泥现有的开发要素，热衷研究新技术(语言)，偶尔写文。</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">启码匠</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">启码匠</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">磨刀霍霍向编程</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/Home">博客首页</a></li>
+                
+                    <li><a href="/tags">标签云</a></li>
+                
+                    <li><a href="/about">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="mailto:&#109;&#120;&#120;&#48;&#56;&#48;&#55;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/moxun33" title="github">github</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-手把手教你用-PHP-拼接微信好友头像" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/06/13/手把手教你用-PHP-拼接微信好友头像/" class="article-date">
+      <time datetime="2017-06-13T12:18:09.000Z" itemprop="datePublished">2017-06-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      手把手教你用 PHP 拼接微信好友头像
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信/">微信</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <ul>
+<li>最近做个人微信机器人挺热门的， 同时很多人也用来对自己的微信好友做分析和统计， 比如：简单的就是利用微信好友的头像做成一张大图， 让朋友圈的好友都看到彼此， 觉得蛮有意思的! 网上已经有 Python 或 Nodejs 的实现了， 我就想用 PHP 来实现一下。<a id="more"></a>
+</li>
+</ul>
+<h3 id="1、如何选一个微信爬虫。"><a href="#1、如何选一个微信爬虫。" class="headerlink" title="1、如何选一个微信爬虫。"></a>1、如何选一个微信爬虫。</h3><h4 id="所谓的微信爬虫就是利用微信的-web-api-做一些自动化的事情，这里强烈推荐由-PHP7实现的vbot-所有的东西都可以在-vbot-的文档里找到，-在微信-web-api-的范围内你都可以为所欲为了。注意：-本文所有的微信数据都基于-vbot-获取的。"><a href="#所谓的微信爬虫就是利用微信的-web-api-做一些自动化的事情，这里强烈推荐由-PHP7实现的vbot-所有的东西都可以在-vbot-的文档里找到，-在微信-web-api-的范围内你都可以为所欲为了。注意：-本文所有的微信数据都基于-vbot-获取的。" class="headerlink" title="所谓的微信爬虫就是利用微信的 web api 做一些自动化的事情，这里强烈推荐由 PHP7实现的vbot, 所有的东西都可以在 vbot 的文档里找到， 在微信 web api 的范围内你都可以为所欲为了。注意： 本文所有的微信数据都基于 vbot 获取的。"></a>所谓的微信爬虫就是利用微信的 web api 做一些自动化的事情，这里强烈推荐由 PHP7实现的<a href="https://github.com/HanSon/vbot" target="_blank" rel="noopener">vbot</a>, 所有的东西都可以在 vbot 的文档里找到， 在微信 web api 的范围内你都可以为所欲为了。注意： 本文所有的微信数据都基于 vbot 获取的。</h4><h3 id="2、如何爬取微信好友的头像。"><a href="#2、如何爬取微信好友的头像。" class="headerlink" title="2、如何爬取微信好友的头像。"></a>2、如何爬取微信好友的头像。</h3><h4 id="首先要获取的是你的微信好友列表，-在-vbot-的基础上我们可以这样做："><a href="#首先要获取的是你的微信好友列表，-在-vbot-的基础上我们可以这样做：" class="headerlink" title="首先要获取的是你的微信好友列表， 在 vbot 的基础上我们可以这样做："></a>首先要获取的是你的微信好友列表， 在 vbot 的基础上我们可以这样做：</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">File::saveTo(<span class="keyword">__DIR__</span>.<span class="string">'/contacts.json'</span>, $contacts[<span class="string">'friends'</span>]);</span><br></pre></td></tr></table></figure>
+<h4 id="把微信好友列表写入到一个文件中。"><a href="#把微信好友列表写入到一个文件中。" class="headerlink" title="把微信好友列表写入到一个文件中。"></a>把微信好友列表写入到一个文件中。</h4><h4 id="然后对这个文件进行处理，-提取微信好友的头像链接和下载。"><a href="#然后对这个文件进行处理，-提取微信好友的头像链接和下载。" class="headerlink" title="然后对这个文件进行处理， 提取微信好友的头像链接和下载。"></a>然后对这个文件进行处理， 提取微信好友的头像链接和下载。</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$contactAmount = $friends-&gt;count();</span><br><span class="line">   <span class="keyword">for</span>($i=<span class="number">0</span>; $i&lt; $contactAmount; $i++)&#123;</span><br><span class="line">     $data =  $friends-&gt;getAvatar(<span class="keyword">self</span>::$usernameArr[$i]);</span><br><span class="line">    file_put_contents(<span class="keyword">__DIR__</span>.<span class="string">'/avatars/'</span>.$i.<span class="string">'.jpeg'</span>,$data);</span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="就这样，-我们就已经能把所有的微信好友头像下载到指定的地方了。注意：建议图片的命名规则用数字递增的方式，-方便后面的图片拼接循环。"><a href="#就这样，-我们就已经能把所有的微信好友头像下载到指定的地方了。注意：建议图片的命名规则用数字递增的方式，-方便后面的图片拼接循环。" class="headerlink" title="就这样， 我们就已经能把所有的微信好友头像下载到指定的地方了。注意：建议图片的命名规则用数字递增的方式， 方便后面的图片拼接循环。"></a>就这样， 我们就已经能把所有的微信好友头像下载到指定的地方了。注意：建议图片的命名规则用数字递增的方式， 方便后面的图片拼接循环。</h4><h3 id="3、图片拼接"><a href="#3、图片拼接" class="headerlink" title="3、图片拼接"></a>3、图片拼接</h3><h4 id="本文的重点来了，-现在网上有很多图片拼接小工具，-但-PHP-实现的寥寥无几，-找了一轮后，-决定还是自己写。"><a href="#本文的重点来了，-现在网上有很多图片拼接小工具，-但-PHP-实现的寥寥无几，-找了一轮后，-决定还是自己写。" class="headerlink" title="本文的重点来了， 现在网上有很多图片拼接小工具， 但 PHP 实现的寥寥无几， 找了一轮后， 决定还是自己写。"></a>本文的重点来了， 现在网上有很多图片拼接小工具， 但 PHP 实现的寥寥无几， 找了一轮后， 决定还是自己写。</h4><p>（1）首先，要确定画布的长度和宽度。那怎么根据图片数量确定画布大小呢。我们门这样分析：由于微信头像的宽高相等， 那我们拼接到画布的托也是宽高相等，这里全部设置为200px， 那么， 只要确定行数和列数， 就知道画布的大小了。<strong>还有一点注意：当图片数量小于4张时， 我们只需要一行（或者一列）即可。</strong> 当图片数大于3时：</p>
+<p>a、确定列数（每行多少张）：列数 = 总数（大于3）的平方根， 向上取整<br>b、确定行数（每列多少张）：总数（大于3）除以列数， 向上取整</p>
+<ul>
+<li>这里的行数和行数的计算方式是为了尽可能使画布的宽度和高度差值减小。你也可以根据自己的好修改计算方法， 但一定要跟后面的图片排列的行数和列数一致， 否则会出现图片越界的问题。</li>
+</ul>
+<p>知道了行数和列数， 那很容易得出画布的宽高  </p>
+<p>c、画布宽度 = 图片宽度（200px）乘以 列数<br>d、画布高度 = 图片高度（200px）乘以 行数</p>
+<p>代码如下：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 根据图片数据计算画布的大小</span></span><br><span class="line"><span class="comment">   * 默认每张图宽度高度 = 200</span></span><br><span class="line"><span class="comment">   * 画布大小计算方法：</span></span><br><span class="line"><span class="comment">   * 列数 = 总数（大于3）的平方根， 向上取整</span></span><br><span class="line"><span class="comment">   * 行数 = 总数（大于3）除以列数， 向上取整</span></span><br><span class="line"><span class="comment">   *  <span class="doctag">@param</span> $imageCount</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">private</span> <span class="function"><span class="keyword">function</span>  <span class="title">prepareForCanvas</span><span class="params">($imageCount)</span></span>&#123;</span><br><span class="line">      $canvasWidth = <span class="number">0</span>;</span><br><span class="line">      $canvasHeight = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">if</span> ($imageCount &gt; <span class="number">0</span>) &#123;</span><br><span class="line"></span><br><span class="line">          <span class="comment">//宽度 = 列数*200</span></span><br><span class="line">          <span class="keyword">if</span> ($imageCount &lt; <span class="number">4</span>) &#123;</span><br><span class="line"></span><br><span class="line">                  $canvasWidth = <span class="keyword">$this</span>-&gt;width*$imageCount;</span><br><span class="line">                  <span class="keyword">$this</span>-&gt;eachLineCount = $imageCount;</span><br><span class="line">                  $canvasHeight = <span class="keyword">$this</span>-&gt;height;</span><br><span class="line">          &#125;<span class="keyword">else</span>&#123;</span><br><span class="line"></span><br><span class="line">              <span class="keyword">$this</span>-&gt;eachLineCount = ceil(sqrt($imageCount)); <span class="comment">//列数</span></span><br><span class="line">              <span class="keyword">$this</span>-&gt;eachColumCount = ceil($imageCount/<span class="keyword">$this</span>-&gt;eachLineCount);</span><br><span class="line">              $canvasWidth = <span class="keyword">$this</span>-&gt;width * <span class="keyword">$this</span>-&gt;eachLineCount;</span><br><span class="line">              $canvasHeight = <span class="keyword">$this</span>-&gt;height * <span class="keyword">$this</span>-&gt;eachColumCount;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">echo</span> <span class="string">'图片总数：'</span>.$imageCount.PHP_EOL;</span><br><span class="line">      <span class="comment">//创建画布</span></span><br><span class="line">      <span class="keyword">$this</span>-&gt;createCanvas($canvasWidth, $canvasHeight);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">     <span class="comment">/**创建画布</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> $width</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> $height</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">createCanvas</span><span class="params">($cwidth, $cheight)</span> </span>&#123;</span><br><span class="line">      $totalImage = count(<span class="keyword">$this</span>-&gt;srcImages);     </span><br><span class="line"></span><br><span class="line">      <span class="keyword">$this</span>-&gt;canvas = imagecreatetruecolor($cwidth, $cheight);</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 使画布透明</span></span><br><span class="line">      $white = imagecolorallocate(<span class="keyword">$this</span>-&gt;canvas, <span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>);</span><br><span class="line">      imagefill(<span class="keyword">$this</span>-&gt;canvas, <span class="number">0</span>, <span class="number">0</span>, $white);</span><br><span class="line">      imagecolortransparent(<span class="keyword">$this</span>-&gt;canvas, $white);</span><br><span class="line">      <span class="keyword">echo</span> <span class="string">'画布大小:长度：'</span>.$cwidth.<span class="string">'，高度：'</span>. $cheight.PHP_EOL.</span><br><span class="line">          <span class="string">'每行数量（列数）：'</span>.<span class="keyword">$this</span>-&gt;eachLineCount.<span class="string">',每列数量（行数）：'</span>.<span class="keyword">$this</span>-&gt;eachColumCount.PHP_EOL;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="4、画布建好了，-接下来就是拼接图片了。"><a href="#4、画布建好了，-接下来就是拼接图片了。" class="headerlink" title="4、画布建好了， 接下来就是拼接图片了。"></a>4、画布建好了， 接下来就是拼接图片了。</h3><h4 id="这里的难点在于确定图片在哪个位置。"><a href="#这里的难点在于确定图片在哪个位置。" class="headerlink" title="这里的难点在于确定图片在哪个位置。"></a>这里的难点在于确定图片在哪个位置。</h4><p>a、图片数小于4时， 只有一行， 每张图片的 y 值都是0， x 值随图片数每次递增200px。<br>b、图片数大于3时， 循环复制图片到画布上， 当图片的序号等于列数的倍数时， 就要换行， 那么 x 值从0开始， y 值递增200px； 以此类推，直到所有图片复制到画布上。</p>
+<p>代码如下：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 合并图片</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">combine</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">empty</span>(<span class="keyword">$this</span>-&gt;srcImages)  || <span class="keyword">$this</span>-&gt;width==<span class="number">0</span> || <span class="keyword">$this</span>-&gt;height==<span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    $imageCount = count(<span class="keyword">$this</span>-&gt;srcImages);</span><br><span class="line">    <span class="keyword">$this</span>-&gt;prepareForCanvas($imageCount);</span><br><span class="line">    <span class="keyword">for</span>($i=<span class="number">0</span>; $i&lt; $imageCount; $i++) &#123;</span><br><span class="line">        $srcImage = <span class="keyword">$this</span>-&gt;srcImages[$i];</span><br><span class="line">        $srcImageInfo = getimagesize($srcImage);</span><br><span class="line">        <span class="comment">// 如果能够正确的获取原图的基本信息</span></span><br><span class="line">        <span class="keyword">if</span> ($srcImageInfo) &#123;</span><br><span class="line">            $srcWidth = $srcImageInfo[<span class="number">0</span>];</span><br><span class="line">            $srcHeight = $srcImageInfo[<span class="number">1</span>];</span><br><span class="line">            $fileType = $srcImageInfo[<span class="number">2</span>];</span><br><span class="line">            <span class="keyword">if</span> ($fileType == <span class="number">2</span>) &#123;</span><br><span class="line">                <span class="comment">// 原图是 jpg 类型</span></span><br><span class="line">                $srcImage = imagecreatefromjpeg($srcImage);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> ($fileType == <span class="number">3</span>) &#123;</span><br><span class="line">                <span class="comment">// 原图是 png 类型</span></span><br><span class="line">                $srcImage = imagecreatefrompng($srcImage);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 无法识别的类型</span></span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//只支持横向</span></span><br><span class="line">            <span class="comment">// 计算当前原图片应该位于画布的哪个位置</span></span><br><span class="line">            <span class="keyword">if</span> ($i &lt; <span class="keyword">$this</span>-&gt;eachLineCount)&#123;</span><br><span class="line">                $destX = $i * <span class="keyword">$this</span>-&gt;width;</span><br><span class="line">                $desyY = <span class="number">0</span>;</span><br><span class="line">                $currentRowIndex = <span class="number">0</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//计算该图片应该在第几行， 第几列</span></span><br><span class="line">                 $tmp = ($i+<span class="number">1</span>)/<span class="keyword">$this</span>-&gt;eachLineCount;</span><br><span class="line">                <span class="keyword">if</span> (($i+<span class="number">1</span>)%<span class="keyword">$this</span>-&gt;eachLineCount == <span class="number">0</span>)&#123;</span><br><span class="line">                    $currentRowIndex = $tmp <span class="number">-1</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    $currentRowIndex = floor($tmp);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                $destX = ($i - $currentRowIndex*<span class="keyword">$this</span>-&gt;eachLineCount)*<span class="keyword">$this</span>-&gt;width;</span><br><span class="line">                $desyY = $currentRowIndex*<span class="keyword">$this</span>-&gt;height;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">echo</span> <span class="string">'当前索引:'</span>.$i.<span class="string">',当前行的索引: '</span>.$currentRowIndex.<span class="string">',图片位置 X: '</span>.$destX.<span class="string">',图片位置 Y: '</span>.$desyY.PHP_EOL;</span><br><span class="line"></span><br><span class="line">            imagecopyresampled(<span class="keyword">$this</span>-&gt;canvas, $srcImage, $destX, $desyY,</span><br><span class="line">                <span class="number">0</span>, <span class="number">0</span>, <span class="keyword">$this</span>-&gt;width, <span class="keyword">$this</span>-&gt;height, $srcWidth, $srcHeight);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果有指定目标地址，则输出到文件</span></span><br><span class="line">    <span class="keyword">if</span> ( ! <span class="keyword">empty</span>(<span class="keyword">$this</span>-&gt;destImage)) &#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;output();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="5、效果预览"><a href="#5、效果预览" class="headerlink" title="5、效果预览"></a>5、效果预览</h3><p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fgfalih389j30b40b40t8.jpg" alt=""></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fgfalhd9z8j30rs0m8acd.jpg" alt=""></p>
+<h3 id="6、完整的代码"><a href="#6、完整的代码" class="headerlink" title="6、完整的代码"></a>6、完整的代码</h3><p><a href="https://github.com/moxun33/imageMergerUtil" target="_blank" rel="noopener">https://github.com/moxun33/imageMergerUtil</a></p>
+
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+            <div class="shang_tit">
+              <p>纯属好玩</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫">
+            </div>
+              <div class="pay_explain">扫码打赏，你说多少就多少</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝"></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信"></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/06/13/手把手教你用-PHP-拼接微信好友头像/">手把手教你用 PHP 拼接微信好友头像</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 启码匠 的个人博客">启码匠</a></p>
+        <p><span>发布时间:</span>2017年06月13日 - 20时18分</p>
+        <p><span>最后更新:</span>2018年12月31日 - 15时40分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/06/13/手把手教你用-PHP-拼接微信好友头像/" title="手把手教你用 PHP 拼接微信好友头像">https://qimajiang.com/2017/06/13/手把手教你用-PHP-拼接微信好友头像/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://qimajiang.com/2017/06/13/手把手教你用-PHP-拼接微信好友头像/　　作者: 启码匠" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target="_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2017/07/08/聊聊-web-中的网络请求/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          聊聊 web 中的网络请求
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/27/闲谈-PHP7新特性/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">闲谈 PHP7新特性</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、如何选一个微信爬虫。"><span class="toc-number">1.</span> <span class="toc-text">1、如何选一个微信爬虫。</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#所谓的微信爬虫就是利用微信的-web-api-做一些自动化的事情，这里强烈推荐由-PHP7实现的vbot-所有的东西都可以在-vbot-的文档里找到，-在微信-web-api-的范围内你都可以为所欲为了。注意：-本文所有的微信数据都基于-vbot-获取的。"><span class="toc-number">1.1.</span> <span class="toc-text">所谓的微信爬虫就是利用微信的 web api 做一些自动化的事情，这里强烈推荐由 PHP7实现的vbot, 所有的东西都可以在 vbot 的文档里找到， 在微信 web api 的范围内你都可以为所欲为了。注意： 本文所有的微信数据都基于 vbot 获取的。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、如何爬取微信好友的头像。"><span class="toc-number">2.</span> <span class="toc-text">2、如何爬取微信好友的头像。</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#首先要获取的是你的微信好友列表，-在-vbot-的基础上我们可以这样做："><span class="toc-number">2.1.</span> <span class="toc-text">首先要获取的是你的微信好友列表， 在 vbot 的基础上我们可以这样做：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#把微信好友列表写入到一个文件中。"><span class="toc-number">2.2.</span> <span class="toc-text">把微信好友列表写入到一个文件中。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#然后对这个文件进行处理，-提取微信好友的头像链接和下载。"><span class="toc-number">2.3.</span> <span class="toc-text">然后对这个文件进行处理， 提取微信好友的头像链接和下载。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#就这样，-我们就已经能把所有的微信好友头像下载到指定的地方了。注意：建议图片的命名规则用数字递增的方式，-方便后面的图片拼接循环。"><span class="toc-number">2.4.</span> <span class="toc-text">就这样， 我们就已经能把所有的微信好友头像下载到指定的地方了。注意：建议图片的命名规则用数字递增的方式， 方便后面的图片拼接循环。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、图片拼接"><span class="toc-number">3.</span> <span class="toc-text">3、图片拼接</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#本文的重点来了，-现在网上有很多图片拼接小工具，-但-PHP-实现的寥寥无几，-找了一轮后，-决定还是自己写。"><span class="toc-number">3.1.</span> <span class="toc-text">本文的重点来了， 现在网上有很多图片拼接小工具， 但 PHP 实现的寥寥无几， 找了一轮后， 决定还是自己写。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、画布建好了，-接下来就是拼接图片了。"><span class="toc-number">4.</span> <span class="toc-text">4、画布建好了， 接下来就是拼接图片了。</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#这里的难点在于确定图片在哪个位置。"><span class="toc-number">4.1.</span> <span class="toc-text">这里的难点在于确定图片在哪个位置。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、效果预览"><span class="toc-number">5.</span> <span class="toc-text">5、效果预览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、完整的代码"><span class="toc-number">6.</span> <span class="toc-text">6、完整的代码</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <div id="gitments"></div>
+<script src="/js/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+      id:  '手把手教你用 PHP 拼接微信好友头像',
+      owner: 'moxun33',
+      repo: 'moxun33.github.io',
+      oauth: {
+        client_id: 'b7d60b111f8dd152f6f9',
+        client_secret: 'd9e941da2e552874785b833e84f43b7534a7527d',
+      },
+    })
+    gitment.render('gitments')
+</script>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/07/08/聊聊-web-中的网络请求/" title="上一篇: 聊聊 web 中的网络请求">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2017/05/27/闲谈-PHP7新特性/" title="下一篇: 闲谈 PHP7新特性">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/11/21/React应用优化/">React应用优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/25/浏览器持久化存储那些事/">浏览器持久化存储那些事</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/14/使用React一年的简单总结/">使用React一年的简单总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/21/TypeScript开发笔记/">TypeScript开发笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/28/TypeScript 与 React /">TypeScript 与 React</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/24/使用 Eslint 和 Prettier美化 React 代码/">使用 ESLint、Prettier 和 StyleLint美化 React 代码</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/19/SVG入门与实践/">SVG入门与实践</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/25/搭建前端异常监控服务/">搭建前端异常监控系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/24/构建企业内部React组件库/">构建企业内部React组件库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/10/前端PDF预览那些事/">前端预览PDF那些事</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/28/开发一个美剧自动嗅探下载器-TVDragon-下/">开发一个美剧自动嗅探下载器:TVDragon(下)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/16/开发一个美剧自动嗅探下载器-上-/">开发一个美剧自动嗅探下载器:TVDragon(上)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/18/使用 Goutte爬取代理 IP 池/">使用 Goutte爬取 IP 代理池</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/28/使用Jenkins自动部署React前端项目/">使用Jenkins自动部署React前端项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/21/React开发笔记/">React开发笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/03/mac下使用Vagrant-构建跨平台开发环境/">mac 下使用Vagrant 构建跨平台开发环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/18/web 的几种通信方式/">web 的几种通信方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/08/聊聊-web-中的网络请求/">聊聊 web 中的网络请求</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/13/手把手教你用-PHP-拼接微信好友头像/">手把手教你用 PHP 拼接微信好友头像</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/27/闲谈-PHP7新特性/">闲谈 PHP7新特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/04/使用-ngrok-实现内网穿透/">使用 ngrok 实现内网穿透</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/18/postgresql-数据库笔记/">postgresql 数据库笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/25/PHP工匠历险记-开启篇-一、搭建PHP开发环境/">搭建PHP开发环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/25/树莓派搭建反向代理，实现远程管理/">树莓派搭建反向代理，实现远程管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/21/objective-c初学笔记/">objective-c初学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/20/web-入门必看指南/">web 入门必看指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/20/mac下-搭建Cordova-ionic-AngularJs开发环境/">mac下 搭建Cordova+ionic+AngularJs开发环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/18/树莓派3安装-Docker记录/">树莓派3安装 Docker记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/17/hexo-常用命令/">hexo常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/23/Thinkphp微信支付开发坑/">Thinkphp微信支付开发坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/23/ubuntu64位安装32位依赖库，并安装njit-client/">ubuntu64位安装32位依赖库，并安装njit-client</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/七牛云和又拍云的比较/">七牛云和又拍云的比较</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/MAC环境下用Clover制作原版安装U盘/">MAC环境下用Clover制作原版安装U盘</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/20/editormd/">editormd 的使用介绍</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+        
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2018 启码匠
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+    </div>
+    <script>
+            (function(){
+                var bp = document.createElement('script');
+                var curProtocol = window.location.protocol.split(':')[0];
+                if (curProtocol === 'https') {
+                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+                }
+                else {
+                    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+                }
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(bp, s);
+            })();
+            </script>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 20;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  <script type="text/javascript">
+    window.onload = function(){
+      document.getElementById("search").onclick = function(){
+          console.log("search")
+          search();
+      }
+    }
+    function search(){
+      (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+      (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+      e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+      })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+      _st('install','A1Pz-LKMXbrzcFg2FWi6','2.0.0');
+    }
+  </script>
+
+  </div>
+</body>
+</html>

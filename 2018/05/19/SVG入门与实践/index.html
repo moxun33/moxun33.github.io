@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>SVG入门与实践 | 启码匠 - 磨刀霍霍向编程</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="今天来聊聊SVG技术。本文先简单阐述svg的概念和一些特性， 再分享一些我在项目实战中用到的svg例子。">
+<meta name="keywords" content="前端,SVG">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SVG入门与实践">
+<meta property="og:url" content="https://qimajiang.com/2018/05/19/SVG入门与实践/index.html">
+<meta property="og:site_name" content="启码匠 - 磨刀霍霍向编程">
+<meta property="og:description" content="今天来聊聊SVG技术。本文先简单阐述svg的概念和一些特性， 再分享一些我在项目实战中用到的svg例子。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1frx8n76mhrg30j30atb29.gif">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1frx8ozts40j304o04rdfo.jpg">
+<meta property="og:updated_time" content="2018-12-31T07:40:43.355Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SVG入门与实践">
+<meta name="twitter:description" content="今天来聊聊SVG技术。本文先简单阐述svg的概念和一些特性， 再分享一些我在项目实战中用到的svg例子。">
+<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1frx8n76mhrg30j30atb29.gif">
+  
+    <link rel="alternative" href="/atom.xml" title="启码匠 - 磨刀霍霍向编程" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet">
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: true
+      }
+  </script>
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.png" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">启码匠</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">磨刀霍霍向编程</p>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="search" placeholder=" Search...">
+            </form>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/Home">博客首页</a></li>
+                        
+                            <li><a href="/tags">标签云</a></li>
+                        
+                            <li><a href="/about">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="mailto:&#109;&#120;&#120;&#48;&#56;&#48;&#55;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/moxun33" title="github">github</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Babel/" style="font-size: 10px;">Babel</a> <a href="/tags/Clover/" style="font-size: 10px;">Clover</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/ESLint/" style="font-size: 10px;">ESLint</a> <a href="/tags/Goutte/" style="font-size: 10px;">Goutte</a> <a href="/tags/Homestead/" style="font-size: 10px;">Homestead</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/LAMP/" style="font-size: 10px;">LAMP</a> <a href="/tags/MAC-OSX86/" style="font-size: 10px;">MAC OSX86</a> <a href="/tags/Object-C/" style="font-size: 10px;">Object C</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/PHP/" style="font-size: 18px;">PHP</a> <a href="/tags/PHP7/" style="font-size: 10px;">PHP7</a> <a href="/tags/PostgreSQL/" style="font-size: 10px;">PostgreSQL</a> <a href="/tags/Prettier/" style="font-size: 10px;">Prettier</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/SVG/" style="font-size: 10px;">SVG</a> <a href="/tags/ThinkPHP/" style="font-size: 10px;">ThinkPHP</a> <a href="/tags/TypeScript/" style="font-size: 12px;">TypeScript</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/U盘/" style="font-size: 10px;">U盘</a> <a href="/tags/Vagrant/" style="font-size: 10px;">Vagrant</a> <a href="/tags/Webpack/" style="font-size: 10px;">Webpack</a> <a href="/tags/autossh/" style="font-size: 10px;">autossh</a> <a href="/tags/editor-md/" style="font-size: 10px;">editor.md</a> <a href="/tags/hexo命令/" style="font-size: 10px;">hexo命令</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/mac系统/" style="font-size: 10px;">mac系统</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/ngrok/" style="font-size: 10px;">ngrok</a> <a href="/tags/web/" style="font-size: 14px;">web</a> <a href="/tags/七牛云/" style="font-size: 10px;">七牛云</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/入门指南/" style="font-size: 10px;">入门指南</a> <a href="/tags/内网穿透/" style="font-size: 10px;">内网穿透</a> <a href="/tags/前端/" style="font-size: 16px;">前端</a> <a href="/tags/又拍云/" style="font-size: 10px;">又拍云</a> <a href="/tags/反向代理/" style="font-size: 10px;">反向代理</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/开发环境/" style="font-size: 10px;">开发环境</a> <a href="/tags/微信/" style="font-size: 12px;">微信</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/树莓派-raspberrypi/" style="font-size: 12px;">树莓派 raspberrypi</a> <a href="/tags/浏览器/" style="font-size: 10px;">浏览器</a> <a href="/tags/爬虫/" style="font-size: 14px;">爬虫</a> <a href="/tags/监控/" style="font-size: 10px;">监控</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxun33.github.io/">name</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注后端开发和前端开发，偶尔搞搞 iOS 开发，不会拘泥现有的开发要素，热衷研究新技术(语言)，偶尔写文。</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">启码匠</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">启码匠</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">磨刀霍霍向编程</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/Home">博客首页</a></li>
+                
+                    <li><a href="/tags">标签云</a></li>
+                
+                    <li><a href="/about">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="mailto:&#109;&#120;&#120;&#48;&#56;&#48;&#55;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/moxun33" title="github">github</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-SVG入门与实践" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/05/19/SVG入门与实践/" class="article-date">
+      <time datetime="2018-05-19T03:21:42.000Z" itemprop="datePublished">2018-05-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SVG入门与实践
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SVG/">SVG</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <ul>
+<li>今天来聊聊SVG技术。本文先简单阐述svg的概念和一些特性， 再分享一些我在项目实战中用到的svg例子。<a id="more"></a>
+</li>
+</ul>
+<h1 id="一、入门"><a href="#一、入门" class="headerlink" title="一、入门"></a>一、入门</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>Scalable Vector Graphics (SVG) 可扩展矢量绘图，是一种用来描述二维矢量图形的XML标记语言。</p>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><p>SVG 可被非常多的工具读取和修改（比如记事本）<br>SVG 与 JPEG 和 GIF 图像比起来，尺寸更小，且可压缩性更强。<br>SVG 是可伸缩的<br>SVG 图像可在任何的分辨率下被高质量地打印<br>SVG 可在图像质量不下降的情况下被放大<br>SVG 图像中的文本是可选的，同时也是可搜索的（很适合制作地图）<br>SVG 可以与 Java 技术一起运行<br>SVG 是开放的标准<br>SVG 文件是纯粹的 XML<br>SVG 的主要竞争者是 Flash。<br>与 Flash 相比，SVG 最大的优势是与其他标准（比如 XSL 和 DOM）相兼容。而 Flash 则是未开源的私有技术。</p>
+<h2 id="基础形状"><a href="#基础形状" class="headerlink" title="基础形状"></a>基础形状</h2><p>矩形 <code>&lt;rect&gt;</code><br>圆形 <code>&lt;circle&gt;</code><br>椭圆 <code>&lt;ellipse&gt;</code><br>线 <code>&lt;line&gt;</code><br>折线 <code>&lt;polyline&gt;</code><br>多边形 <code>&lt;polygon&gt;</code><br>路径 <code>&lt;path&gt;</code></p>
+<h2 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h2><p> 将SVG文件作为图片，与普通图片使用方式一致；但不会加载自身引用， 如字体、图标等等外部资源。</p>
+<p> 将SVG作为应用程序，SVG文件也可以作为<code>&lt;object&gt;</code>元素的data属性引入HTML中。但是，MIME type必须是<code>image/svg+xml</code>。</p>
+<p> 混合文档, 直接跟<code>HTML</code>标签混合写入， 会继承父文档的样式，默认以<code>inline</code>方式显示。</p>
+<h2 id="使用总结"><a href="#使用总结" class="headerlink" title="使用总结"></a>使用总结</h2><p>在我实际使用svg的过程中， 除了<code>path</code>， 我觉得实现起来都不会太难。 path的可以用于十分复杂的场景，也十分灵活， 但学习曲线比较陡。接下来就一起看看path的一些实践例子。</p>
+<h1 id="二、实践"><a href="#二、实践" class="headerlink" title="二、实践"></a>二、实践</h1><h2 id="svg实现波浪、水泡效果"><a href="#svg实现波浪、水泡效果" class="headerlink" title="svg实现波浪、水泡效果"></a>svg实现波浪、水泡效果</h2><h3 id="先上效果图"><a href="#先上效果图" class="headerlink" title="先上效果图"></a>先上效果图</h3><p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1frx8n76mhrg30j30atb29.gif" alt=""></p>
+<h3 id="实现代码-Reactjs中"><a href="#实现代码-Reactjs中" class="headerlink" title="实现代码(Reactjs中)"></a>实现代码(Reactjs中)</h3><h4 id="1、波浪的实现"><a href="#1、波浪的实现" class="headerlink" title="1、波浪的实现"></a>1、波浪的实现</h4><p>创建单个波浪的svg,<code>wave.svg</code>(以下css的背景图引用) ， 主要使用<code>path</code>的<code>C</code>指令绘制3次贝塞尔曲线， 其他指令可查阅svg教程。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;svg xmlns=<span class="string">"http://www.w3.org/2000/svg"</span> width=<span class="string">"1600"</span> height=<span class="string">"698"</span>&gt;</span><br><span class="line">    &lt;defs&gt;</span><br><span class="line">        &lt;linearGradient id=<span class="string">"a"</span> x1=<span class="string">"50%"</span> x2=<span class="string">"50%"</span> y1=<span class="string">"-10.959%"</span> y2=<span class="string">"100%"</span>&gt;</span><br><span class="line">            &lt;stop stop-color=<span class="string">"#ffffff"</span> stop-opacity=<span class="string">".25"</span> offset=<span class="string">"0%"</span>/&gt;</span><br><span class="line">            &lt;stop stop-color=<span class="string">"#ffffff"</span> offset=<span class="string">"100%"</span>/&gt;</span><br><span class="line">        &lt;/linearGradient&gt;</span><br><span class="line">    &lt;/defs&gt;</span><br><span class="line">    &lt;path fill=<span class="string">"url(#a)"</span> fill-rule=<span class="string">"evenodd"</span> d=<span class="string">"M.005 121C311 121 409.898-.25 811 0c400 0 500 121 789 121v77H0s.005-48 .005-77z"</span> transform=<span class="string">"matrix(-1 0 0 1 1600 0)"</span>/&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
+<p>创建4个<code>div</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div className=<span class="string">"ocean"</span>&gt;</span><br><span class="line">	&lt;div className=<span class="string">"wave"</span>&gt;&lt;/div&gt;</span><br><span class="line">	&lt;div className=<span class="string">"wave"</span>&gt;&lt;/div&gt;</span><br><span class="line">	&lt;div className=<span class="string">"wave"</span>&gt;&lt;/div&gt;</span><br><span class="line">	&lt;div className=<span class="string">"wave"</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>编写样式</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.ocean</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: .<span class="number">4</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">320px</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">z-index</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.wave</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">'../../assets/login/svg/wave.svg'</span>) repeat-x;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">119px</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">12800px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">318px</span>;</span><br><span class="line">  <span class="attribute">animation</span>: wave <span class="number">4.6s</span> <span class="built_in">cubic-bezier</span>(0.36, 0.45, 0.63, 0.53) -.<span class="number">125s</span> infinite;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translate3d</span>(220, 110, 0);</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.wave</span><span class="selector-pseudo">:nth-of-type(2)</span> &#123;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">125px</span>;</span><br><span class="line">  <span class="attribute">animation</span>: wave <span class="number">5.5s</span> <span class="built_in">cubic-bezier</span>(0.36, 0.45, 0.63, 0.53) -.<span class="number">125s</span> infinite;</span><br><span class="line">  <span class="attribute">opacity</span>: .<span class="number">6</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.wave</span><span class="selector-pseudo">:nth-of-type(3)</span> &#123;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">130px</span>;</span><br><span class="line">  <span class="attribute">animation</span>: wave <span class="number">7s</span> <span class="built_in">cubic-bezier</span>(0.36, 0.45, 0.63, 0.53)  -.<span class="number">125s</span> infinite;</span><br><span class="line">  <span class="attribute">opacity</span>: .<span class="number">4</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.wave</span><span class="selector-pseudo">:nth-of-type(4)</span> &#123;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">135px</span>;</span><br><span class="line">  <span class="attribute">animation</span>: wave <span class="number">6s</span> <span class="built_in">cubic-bezier</span>(0.36, 0.45, 0.63, 0.53) infinite;</span><br><span class="line">  <span class="comment">/* animation: wave 6s cubic-bezier(0.36, 0.45, 0.63, 0.53) -.125s infinite, swell 7s ease -1.15s infinite;*/</span></span><br><span class="line">  <span class="attribute">opacity</span>: .<span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line">@<span class="keyword">keyframes</span> wave &#123;</span><br><span class="line">  0% &#123;</span><br><span class="line">    <span class="attribute">margin-left</span>: <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  100% &#123;</span><br><span class="line">    <span class="attribute">margin-left</span>: -<span class="number">1600px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@<span class="keyword">keyframes</span> swell &#123;</span><br><span class="line">  0%, 100% &#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translate3d</span>(0, -115px, 0);</span><br><span class="line">  &#125;</span><br><span class="line">  50% &#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translate3d</span>(0, 5px, 0);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>设定每个<code>div</code>的位置和动画， 动画<code>wave</code>表示波浪的作用位置，而且无限循环，动画<code>swell</code>表示波浪的变换。就是如此简单！</p>
+<p>2、水泡的实现</p>
+<p>创建单个水泡（ES6）</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//单个水泡</span></span><br><span class="line">createPop = (i) =&gt; &#123;</span><br><span class="line">		let bottom = Math.round(Math.random() * <span class="number">100</span>).toFixed(<span class="number">2</span>);</span><br><span class="line">		bottom = bottom &gt; <span class="number">55</span> ? <span class="number">55</span> : bottom;</span><br><span class="line">		let left = Math.round(Math.random() * <span class="number">100</span>).toFixed(<span class="number">2</span>);</span><br><span class="line">		let second = Math.random() * <span class="number">10</span>;</span><br><span class="line">		<span class="keyword">return</span> (</span><br><span class="line">			&lt;svg width=<span class="string">"8px"</span> height=<span class="string">"8px"</span> version=<span class="string">"1.1"</span></span><br><span class="line">				 id=&#123;`login-pop$&#123;i&#125;`&#125;</span><br><span class="line">				 style=&#123;&#123;</span><br><span class="line">					 position: <span class="string">'absolute'</span>,</span><br><span class="line">					 bottom: `$&#123;bottom&#125;%`,</span><br><span class="line">					 left: `$&#123;left&#125;%`,</span><br><span class="line">					 animation: ` popup $&#123;second&#125;s cubic-bezier(<span class="number">0.36</span>, <span class="number">0.45</span>, <span class="number">0.63</span>, <span class="number">0.53</span>) <span class="number">-.125</span>s infinite`</span><br><span class="line">				 &#125;&#125;</span><br><span class="line">				 xmlns=<span class="string">"http://www.w3.org/2000/svg"</span>&gt;</span><br><span class="line">				&lt;circle cx=<span class="string">'4px'</span> cy=<span class="string">'4px'</span> r=<span class="string">"4"</span></span><br><span class="line">						fill=<span class="string">'rgba(255,255,255,0.2)'</span>/&gt;</span><br><span class="line">			&lt;/svg&gt;</span><br><span class="line">		);</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<p>创建<code>svg</code>画布，大小8，使用<code>&lt;circle&gt;</code>创建圆，半径是4。内联样式，规定布局位置是: <code>absolute</code>, 具体坐标是随机生成的，再加入动画，无限循环。</p>
+<p>创建多个水泡     </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//生成指定个数的随机位置水泡</span></span><br><span class="line">createRandomPops = () =&gt; &#123;</span><br><span class="line">	let arr = [];</span><br><span class="line">	<span class="keyword">for</span> (let i = <span class="number">0</span>; i &lt; <span class="number">40</span>; i++) &#123;</span><br><span class="line">		arr.push(i);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> arr.map((s, i) =&gt; &#123;</span><br><span class="line">		<span class="keyword">return</span> &lt;div key=&#123;i&#125;&gt;</span><br><span class="line">			&#123;this.createPop(i)&#125;</span><br><span class="line">		&lt;/div&gt;;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>在Reactjs的渲染中调用</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;this.createRandomPops()&#125;</span><br></pre></td></tr></table></figure>
+<p>水泡的样式</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">keyframes</span> popup &#123;</span><br><span class="line">  0%&#123;</span><br><span class="line">    <span class="attribute">bottom</span>: <span class="number">16%</span></span><br><span class="line">  &#125;</span><br><span class="line">  100%&#123;</span><br><span class="line">    <span class="attribute">bottom</span>:  <span class="number">55%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>水泡只需要向上冒即可，开始从底部16%的位置， 终止位置大约在页面中间，无限循环。</p>
+<h2 id="svg实现渐变进度条"><a href="#svg实现渐变进度条" class="headerlink" title="svg实现渐变进度条"></a>svg实现渐变进度条</h2><h3 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h3><p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1frx8ozts40j304o04rdfo.jpg" alt=""></p>
+<ul>
+<li>图中的进度条是由左右两个半圆组合而成。</li>
+</ul>
+<h3 id="代码实现（Reactjs）"><a href="#代码实现（Reactjs）" class="headerlink" title="代码实现（Reactjs）"></a>代码实现（Reactjs）</h3><p>绘制扇形</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 扇形绘图方法,计算终点的 x,y 坐标</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> Number progr  进度值， 小于100的整数</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> String direction 左半圆还是有半圆</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> cx, cy, r默认的x、y坐标， r是半径</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@return</span> 返回path中d指令参数</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">sector = (progr = <span class="number">0</span>, direction = <span class="string">'right'</span>, cy = <span class="number">63</span>, cx = <span class="number">220</span>, r = <span class="number">156</span>) =&gt; &#123;</span><br><span class="line">	let progress = progr &gt; <span class="number">100</span> ? <span class="number">100</span> : (progr &lt; <span class="number">0</span> ? <span class="number">0</span> : progr);</span><br><span class="line">	<span class="comment">// 计算当前的进度对应的角度值</span></span><br><span class="line">	<span class="keyword">const</span> degrees = progress * (<span class="number">360</span> / <span class="number">100</span>);</span><br><span class="line">	<span class="comment">// 计算当前角度对应的弧度值</span></span><br><span class="line">	let rad = degrees * (<span class="number">2</span> * Math.PI / <span class="number">360</span>);</span><br><span class="line">	let startY = cy;</span><br><span class="line">	let x2 = cx,     <span class="comment">//结束X点</span></span><br><span class="line">		y2 = cy;       <span class="comment">//结束Y点</span></span><br><span class="line">	<span class="comment">//   sweepFlag   1 顺时针，0逆时针</span></span><br><span class="line">	<span class="keyword">if</span> (direction === <span class="string">'right'</span>) &#123;</span><br><span class="line">		<span class="comment">//右边圆环</span></span><br><span class="line">		<span class="keyword">if</span> (progress &gt; <span class="number">50</span>) &#123;</span><br><span class="line">			<span class="comment">//多于50%，右边圆环满进度</span></span><br><span class="line">			x2 = cx;</span><br><span class="line">			y2 = startY + r * <span class="number">2</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			x2 = cx + r * Math.sin(rad);<span class="comment">//计算x轴</span></span><br><span class="line">			y2 = startY + r - r * Math.cos(rad);<span class="comment">//计算y轴</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">//左边圆环</span></span><br><span class="line">		<span class="comment">//需要100-progress</span></span><br><span class="line">		<span class="keyword">if</span> (progress &gt; <span class="number">50</span>) &#123;</span><br><span class="line">			<span class="keyword">const</span> leftRad = (<span class="number">100</span> - progress) * (<span class="number">360</span> / <span class="number">100</span>) * (<span class="number">2</span> * Math.PI / <span class="number">360</span>);</span><br><span class="line">			<span class="comment">//console.log(leftRad,811)</span></span><br><span class="line">			startY = startY + r * <span class="number">2</span>;</span><br><span class="line">			x2 = cx - r * Math.sin(leftRad);<span class="comment">//计算x轴</span></span><br><span class="line">			y2 = startY - r - r * Math.cos(leftRad);<span class="comment">//计算y轴</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> [<span class="string">'M'</span>, cx, startY, <span class="string">'A'</span>, r, r, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, x2.toFixed(<span class="number">0</span>), y2.toFixed(<span class="number">0</span>)];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>关键点：由于是动态的进度，x、y的值必须是动态计算，这里包含是数学知识是：在圆中根据角度计算坐标值。<code>M</code>指令是移动光标到初始位置的坐标， <code>A</code>指令是绘制一条曲线。</p>
+<p>在React中定义svg</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;div className=<span class="string">"progress-wrap"</span>&gt;</span><br><span class="line">	&lt;svg width=<span class="string">"160"</span> height=<span class="string">"160"</span> viewBox=<span class="string">"0 0 440 440"</span> className=<span class="string">"center"</span>&gt;</span><br><span class="line">		&lt;defs&gt;</span><br><span class="line">			&lt;linearGradient x1=<span class="string">"0"</span> y1=<span class="string">"0"</span> x2=<span class="string">"1"</span> y2=<span class="string">"1"</span> id=&#123;<span class="string">'left'</span> + idx&#125;&gt;</span><br><span class="line">				&lt;stop offset=<span class="string">"100%"</span> style=&#123;&#123;stopColor: colors.max&#125;&#125;&gt;&lt;/stop&gt;</span><br><span class="line">				&lt;stop offset=<span class="string">"0%"</span> style=&#123;&#123;stopColor: colors.middle&#125;&#125;&gt;&lt;/stop&gt;</span><br><span class="line">			&lt;/linearGradient&gt;</span><br><span class="line">			&lt;linearGradient x1=<span class="string">"1"</span> y1=<span class="string">"1"</span> x2=<span class="string">"0"</span> y2=<span class="string">"0"</span> id=&#123;<span class="string">'right'</span> + idx&#125;&gt;</span><br><span class="line">				&lt;stop offset=<span class="string">"0%"</span> style=&#123;&#123;stopColor: colors.mini&#125;&#125;&gt;&lt;/stop&gt;</span><br><span class="line">				&lt;stop offset=<span class="string">"100%"</span> style=&#123;&#123;stopColor: colors.max&#125;&#125;&gt;&lt;/stop&gt;</span><br><span class="line">			&lt;/linearGradient&gt;</span><br><span class="line">			&lt;filter id=<span class="string">"f1"</span> x=<span class="string">"0"</span> y=<span class="string">"0"</span> height=<span class="string">"200%"</span> width=<span class="string">"200%"</span>&gt;</span><br><span class="line">				&lt;feOffset result=<span class="string">"offOut"</span> in=<span class="string">"SourceAlpha"</span> dx=<span class="string">"4"</span> dy=<span class="string">"4"</span>/&gt;</span><br><span class="line">				&lt;feGaussianBlur result=<span class="string">"blurOut"</span> in=<span class="string">"offOut"</span> stdDeviation=<span class="string">"8"</span>/&gt;</span><br><span class="line">				&lt;feBlend in=<span class="string">"SourceGraphic"</span> in2=<span class="string">"blurOut"</span> mode=<span class="string">"normal"</span>/&gt;</span><br><span class="line">			&lt;/filter&gt;</span><br><span class="line">			&lt;linearGradient id=&#123;<span class="string">'right-'</span> + idx&#125; gradientUnits=<span class="string">"userSpaceOnUse"</span> x1=<span class="string">"220"</span> y1=<span class="string">"60"</span> x2=<span class="string">"220"</span></span><br><span class="line">							y2=<span class="string">"375"</span>&gt;</span><br><span class="line">				&lt;stop offset=<span class="string">"0"</span> style=&#123;&#123;stopColor: colors.mini&#125;&#125;&gt;&lt;/stop&gt;</span><br><span class="line">				&lt;stop offset=<span class="string">"1"</span> style=&#123;&#123;stopColor: colors.middle&#125;&#125;&gt;&lt;/stop&gt;</span><br><span class="line">			&lt;/linearGradient&gt;</span><br><span class="line">			&lt;linearGradient id=&#123;<span class="string">'left-'</span> + idx&#125; gradientUnits=<span class="string">"userSpaceOnUse"</span> x1=<span class="string">"0"</span> y1=<span class="string">"60"</span> x2=<span class="string">"0"</span></span><br><span class="line">							y2=<span class="string">"375"</span>&gt;</span><br><span class="line">				&lt;stop offset=<span class="string">"0"</span> style=&#123;&#123;stopColor: colors.max&#125;&#125;&gt;&lt;/stop&gt;</span><br><span class="line">				&lt;stop offset=<span class="string">"1"</span> style=&#123;&#123;stopColor: colors.middle&#125;&#125;&gt;&lt;/stop&gt;</span><br><span class="line">			&lt;/linearGradient&gt;</span><br><span class="line">		&lt;/defs&gt;</span><br><span class="line">                 &lt;g&gt;</span><br><span class="line">                 <span class="comment">/* 进度条的底色 */</span></span><br><span class="line">			&lt;circle cx=<span class="string">"220"</span> cy=<span class="string">"220"</span> r=<span class="string">"160"</span> strokeWidth=<span class="string">"50"</span> stroke=<span class="string">"#e5e8f8"</span> fill=<span class="string">"none"</span></span><br><span class="line">					strokeDasharray=<span class="string">"1005 1005"</span>&gt;&lt;/circle&gt;</span><br><span class="line">			&lt;path d=&#123;`$&#123;this.sector(percent).join(<span class="string">' '</span>)&#125;`&#125; stroke=&#123;`url(<span class="string">'#right-$&#123;idx&#125;'</span>)`&#125; fill=<span class="string">"none"</span></span><br><span class="line">				  strokeWidth=<span class="string">"40"</span>&gt;&lt;/path&gt;</span><br><span class="line">			&#123;percent &gt; <span class="number">50</span></span><br><span class="line">			&amp;&amp;</span><br><span class="line">			&lt;path d=&#123;`$&#123;this.sector(percent, <span class="string">'left'</span>).join(<span class="string">' '</span>)&#125;`&#125; stroke=&#123;`url(<span class="string">'#left-$&#123;idx&#125;'</span>)`&#125; fill=<span class="string">"none"</span></span><br><span class="line">				  strokeWidth=<span class="string">"40"</span>&gt;&lt;/path&gt;&#125;</span><br><span class="line">			&lt;circle cx=<span class="string">"220"</span> cy=<span class="string">"220"</span> r=<span class="string">"197"</span> strokeWidth=<span class="string">"40"</span> stroke=<span class="string">"#f5f6fa"</span> fill=<span class="string">"none"</span></span><br><span class="line">					strokeDasharray=<span class="string">"1256 1256"</span>&gt;&lt;/circle&gt;</span><br><span class="line">		&lt;/g&gt;</span><br><span class="line">	 </span><br><span class="line">	&lt;/svg&gt;</span><br><span class="line">	&lt;p className=<span class="string">"percent-text  "</span> style=&#123;&#123;color: colors.max&#125;&#125;&gt;</span><br><span class="line">		&lt;span className=&#123;<span class="string">'percent-number'</span>&#125;&gt;</span><br><span class="line">			&#123;percent&#125;</span><br><span class="line">		&lt;/span&gt;</span><br><span class="line">		&lt;span className=&#123;<span class="string">'percent-symbol'</span>&#125;&gt;</span><br><span class="line">			%</span><br><span class="line">		&lt;/span&gt;</span><br><span class="line">	&lt;/p&gt;</span><br><span class="line">         &lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p> <code>linearGradient</code>是表示创建渐变；</p>
+<p> <code>g</code>中的<code>circle</code>表示进度条的底色和外部包裹圆环；当进度大于50%时才创建左半圆，边框的宽度都是40px；</p>
+<p> colors是预定义的几种颜色，用于渐变 ：<code>const colors = {max: &#39;#3cc8bc&#39;, middle: &#39;#27aea3&#39;, mini: &#39;#9eece7&#39;}</code>；</p>
+<p>百分比显示在圆环中间。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本文通过两个简单例子展示svg的强大之处。总的来说，svg不难， 只是涉及的知识比较多， 多实践，就熟练了。</p>
+
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+            <div class="shang_tit">
+              <p>纯属好玩</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫">
+            </div>
+              <div class="pay_explain">扫码打赏，你说多少就多少</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝"></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信"></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/05/19/SVG入门与实践/">SVG入门与实践</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 启码匠 的个人博客">启码匠</a></p>
+        <p><span>发布时间:</span>2018年05月19日 - 11时21分</p>
+        <p><span>最后更新:</span>2018年12月31日 - 15时40分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/05/19/SVG入门与实践/" title="SVG入门与实践">https://qimajiang.com/2018/05/19/SVG入门与实践/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://qimajiang.com/2018/05/19/SVG入门与实践/　　作者: 启码匠" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target="_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2018/06/24/使用 Eslint 和 Prettier美化 React 代码/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          使用 ESLint、Prettier 和 StyleLint美化 React 代码
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/04/25/搭建前端异常监控服务/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">搭建前端异常监控系统</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、入门"><span class="toc-number">1.</span> <span class="toc-text">一、入门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#概念"><span class="toc-number">1.1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特性"><span class="toc-number">1.2.</span> <span class="toc-text">特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基础形状"><span class="toc-number">1.3.</span> <span class="toc-text">基础形状</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用方式"><span class="toc-number">1.4.</span> <span class="toc-text">使用方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用总结"><span class="toc-number">1.5.</span> <span class="toc-text">使用总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、实践"><span class="toc-number">2.</span> <span class="toc-text">二、实践</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#svg实现波浪、水泡效果"><span class="toc-number">2.1.</span> <span class="toc-text">svg实现波浪、水泡效果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#先上效果图"><span class="toc-number">2.1.1.</span> <span class="toc-text">先上效果图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现代码-Reactjs中"><span class="toc-number">2.1.2.</span> <span class="toc-text">实现代码(Reactjs中)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、波浪的实现"><span class="toc-number">2.1.2.1.</span> <span class="toc-text">1、波浪的实现</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#svg实现渐变进度条"><span class="toc-number">2.2.</span> <span class="toc-text">svg实现渐变进度条</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#效果图"><span class="toc-number">2.2.1.</span> <span class="toc-text">效果图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码实现（Reactjs）"><span class="toc-number">2.2.2.</span> <span class="toc-text">代码实现（Reactjs）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <div id="gitments"></div>
+<script src="/js/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+      id:  'SVG入门与实践',
+      owner: 'moxun33',
+      repo: 'moxun33.github.io',
+      oauth: {
+        client_id: 'b7d60b111f8dd152f6f9',
+        client_secret: 'd9e941da2e552874785b833e84f43b7534a7527d',
+      },
+    })
+    gitment.render('gitments')
+</script>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2018/06/24/使用 Eslint 和 Prettier美化 React 代码/" title="上一篇: 使用 ESLint、Prettier 和 StyleLint美化 React 代码">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2018/04/25/搭建前端异常监控服务/" title="下一篇: 搭建前端异常监控系统">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/11/21/React应用优化/">React应用优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/25/浏览器持久化存储那些事/">浏览器持久化存储那些事</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/14/使用React一年的简单总结/">使用React一年的简单总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/21/TypeScript开发笔记/">TypeScript开发笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/28/TypeScript 与 React /">TypeScript 与 React</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/24/使用 Eslint 和 Prettier美化 React 代码/">使用 ESLint、Prettier 和 StyleLint美化 React 代码</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/19/SVG入门与实践/">SVG入门与实践</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/25/搭建前端异常监控服务/">搭建前端异常监控系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/24/构建企业内部React组件库/">构建企业内部React组件库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/10/前端PDF预览那些事/">前端预览PDF那些事</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/28/开发一个美剧自动嗅探下载器-TVDragon-下/">开发一个美剧自动嗅探下载器:TVDragon(下)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/16/开发一个美剧自动嗅探下载器-上-/">开发一个美剧自动嗅探下载器:TVDragon(上)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/18/使用 Goutte爬取代理 IP 池/">使用 Goutte爬取 IP 代理池</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/28/使用Jenkins自动部署React前端项目/">使用Jenkins自动部署React前端项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/21/React开发笔记/">React开发笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/03/mac下使用Vagrant-构建跨平台开发环境/">mac 下使用Vagrant 构建跨平台开发环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/18/web 的几种通信方式/">web 的几种通信方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/08/聊聊-web-中的网络请求/">聊聊 web 中的网络请求</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/13/手把手教你用-PHP-拼接微信好友头像/">手把手教你用 PHP 拼接微信好友头像</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/27/闲谈-PHP7新特性/">闲谈 PHP7新特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/04/使用-ngrok-实现内网穿透/">使用 ngrok 实现内网穿透</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/18/postgresql-数据库笔记/">postgresql 数据库笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/25/PHP工匠历险记-开启篇-一、搭建PHP开发环境/">搭建PHP开发环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/25/树莓派搭建反向代理，实现远程管理/">树莓派搭建反向代理，实现远程管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/21/objective-c初学笔记/">objective-c初学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/20/web-入门必看指南/">web 入门必看指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/20/mac下-搭建Cordova-ionic-AngularJs开发环境/">mac下 搭建Cordova+ionic+AngularJs开发环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/18/树莓派3安装-Docker记录/">树莓派3安装 Docker记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/17/hexo-常用命令/">hexo常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/23/Thinkphp微信支付开发坑/">Thinkphp微信支付开发坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/23/ubuntu64位安装32位依赖库，并安装njit-client/">ubuntu64位安装32位依赖库，并安装njit-client</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/七牛云和又拍云的比较/">七牛云和又拍云的比较</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/MAC环境下用Clover制作原版安装U盘/">MAC环境下用Clover制作原版安装U盘</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/20/editormd/">editormd 的使用介绍</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+        
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2018 启码匠
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+    </div>
+    <script>
+            (function(){
+                var bp = document.createElement('script');
+                var curProtocol = window.location.protocol.split(':')[0];
+                if (curProtocol === 'https') {
+                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+                }
+                else {
+                    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+                }
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(bp, s);
+            })();
+            </script>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 20;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  <script type="text/javascript">
+    window.onload = function(){
+      document.getElementById("search").onclick = function(){
+          console.log("search")
+          search();
+      }
+    }
+    function search(){
+      (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+      (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+      e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+      })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+      _st('install','A1Pz-LKMXbrzcFg2FWi6','2.0.0');
+    }
+  </script>
+
+  </div>
+</body>
+</html>

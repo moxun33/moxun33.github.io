@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>objective-c初学笔记 | 启码匠 - 磨刀霍霍向编程</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="这是2014年在创业时打算开始做 ios 开发的学习笔记，拿过来，做些备忘。主要是 OC的一些基础知识，比较易懂。">
+<meta name="keywords" content="iOS,Object C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="objective-c初学笔记">
+<meta property="og:url" content="https://qimajiang.com/2017/02/21/objective-c初学笔记/index.html">
+<meta property="og:site_name" content="启码匠 - 磨刀霍霍向编程">
+<meta property="og:description" content="这是2014年在创业时打算开始做 ios 开发的学习笔记，拿过来，做些备忘。主要是 OC的一些基础知识，比较易懂。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-31T07:40:43.357Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="objective-c初学笔记">
+<meta name="twitter:description" content="这是2014年在创业时打算开始做 ios 开发的学习笔记，拿过来，做些备忘。主要是 OC的一些基础知识，比较易懂。">
+  
+    <link rel="alternative" href="/atom.xml" title="启码匠 - 磨刀霍霍向编程" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet">
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: true
+      }
+  </script>
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.png" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">启码匠</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">磨刀霍霍向编程</p>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="search" placeholder=" Search...">
+            </form>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/Home">博客首页</a></li>
+                        
+                            <li><a href="/tags">标签云</a></li>
+                        
+                            <li><a href="/about">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="mailto:&#109;&#120;&#120;&#48;&#56;&#48;&#55;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/moxun33" title="github">github</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Babel/" style="font-size: 10px;">Babel</a> <a href="/tags/Clover/" style="font-size: 10px;">Clover</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/ESLint/" style="font-size: 10px;">ESLint</a> <a href="/tags/Goutte/" style="font-size: 10px;">Goutte</a> <a href="/tags/Homestead/" style="font-size: 10px;">Homestead</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/LAMP/" style="font-size: 10px;">LAMP</a> <a href="/tags/MAC-OSX86/" style="font-size: 10px;">MAC OSX86</a> <a href="/tags/Object-C/" style="font-size: 10px;">Object C</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/PHP/" style="font-size: 18px;">PHP</a> <a href="/tags/PHP7/" style="font-size: 10px;">PHP7</a> <a href="/tags/PostgreSQL/" style="font-size: 10px;">PostgreSQL</a> <a href="/tags/Prettier/" style="font-size: 10px;">Prettier</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/SVG/" style="font-size: 10px;">SVG</a> <a href="/tags/ThinkPHP/" style="font-size: 10px;">ThinkPHP</a> <a href="/tags/TypeScript/" style="font-size: 12px;">TypeScript</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/U盘/" style="font-size: 10px;">U盘</a> <a href="/tags/Vagrant/" style="font-size: 10px;">Vagrant</a> <a href="/tags/Webpack/" style="font-size: 10px;">Webpack</a> <a href="/tags/autossh/" style="font-size: 10px;">autossh</a> <a href="/tags/editor-md/" style="font-size: 10px;">editor.md</a> <a href="/tags/hexo命令/" style="font-size: 10px;">hexo命令</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/mac系统/" style="font-size: 10px;">mac系统</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/ngrok/" style="font-size: 10px;">ngrok</a> <a href="/tags/web/" style="font-size: 14px;">web</a> <a href="/tags/七牛云/" style="font-size: 10px;">七牛云</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/入门指南/" style="font-size: 10px;">入门指南</a> <a href="/tags/内网穿透/" style="font-size: 10px;">内网穿透</a> <a href="/tags/前端/" style="font-size: 16px;">前端</a> <a href="/tags/又拍云/" style="font-size: 10px;">又拍云</a> <a href="/tags/反向代理/" style="font-size: 10px;">反向代理</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/开发环境/" style="font-size: 10px;">开发环境</a> <a href="/tags/微信/" style="font-size: 12px;">微信</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/树莓派-raspberrypi/" style="font-size: 12px;">树莓派 raspberrypi</a> <a href="/tags/浏览器/" style="font-size: 10px;">浏览器</a> <a href="/tags/爬虫/" style="font-size: 14px;">爬虫</a> <a href="/tags/监控/" style="font-size: 10px;">监控</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxun33.github.io/">name</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注后端开发和前端开发，偶尔搞搞 iOS 开发，不会拘泥现有的开发要素，热衷研究新技术(语言)，偶尔写文。</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">启码匠</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">启码匠</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">磨刀霍霍向编程</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/Home">博客首页</a></li>
+                
+                    <li><a href="/tags">标签云</a></li>
+                
+                    <li><a href="/about">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="mailto:&#109;&#120;&#120;&#48;&#56;&#48;&#55;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/moxun33" title="github">github</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-objective-c初学笔记" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/02/21/objective-c初学笔记/" class="article-date">
+      <time datetime="2017-02-21T13:46:11.000Z" itemprop="datePublished">2017-02-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      objective-c初学笔记
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Object-C/">Object C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <ul>
+<li>这是2014年在创业时打算开始做 ios 开发的学习笔记，拿过来，做些备忘。主要是 OC的一些基础知识，比较易懂。<a id="more"></a>
+<h4 id="1-在objective-c中使用＃import-lt-gt-导入系统头文件，＃import””导入用户头文件-＃import可以保证头文件只被包含一次。"><a href="#1-在objective-c中使用＃import-lt-gt-导入系统头文件，＃import””导入用户头文件-＃import可以保证头文件只被包含一次。" class="headerlink" title="1. 在objective-c中使用＃import&lt;&gt;导入系统头文件，＃import””导入用户头文件,＃import可以保证头文件只被包含一次。"></a>1. 在objective-c中使用＃import&lt;&gt;导入系统头文件，＃import””导入用户头文件,＃import可以保证头文件只被包含一次。</h4></li>
+</ul>
+<h4 id="2-基本数据类型总结"><a href="#2-基本数据类型总结" class="headerlink" title="2.  基本数据类型总结"></a>2.  基本数据类型总结</h4><pre><code>2.1 基本数据类型分类 
+    1) 整型 
+        int，short int, long int 
+    2) 浮点型 
+        float, double 
+    3) 字符型 
+        char 
+2.2 数据输出格式： 
+    1) int 
+        输出格式符：%i, %d, %o, %x 
+       unsigned int 
+        输出格式符：%u 
+        short 
+        输出格式符：%hi, %hd 
+        unsigned short int 
+        输出格式符：%hu 
+        long int 
+        输出格式符: %li, %ld 
+        unsigned long int 
+        输出格式符：%lu 
+    2) float,double 
+        输出格式符：%f, %e, %g 
+       long double 
+        输出格式符: %lf 
+    3) char 
+
+        输出格式符：%c,字符串为%s
+</code></pre><h4 id="3-语句"><a href="#3-语句" class="headerlink" title="3. 语句"></a>3. 语句</h4><pre><code>循环语句：for, while, do while, break, continue
+
+ 分支：if, else, switch
+</code></pre><h4 id="4-NSlog-函数：与printf-类似，向控制台输出信息。但它增加了时间戳等一些特性。"><a href="#4-NSlog-函数：与printf-类似，向控制台输出信息。但它增加了时间戳等一些特性。" class="headerlink" title="4. NSlog()函数：与printf()类似，向控制台输出信息。但它增加了时间戳等一些特性。"></a>4. NSlog()函数：与printf()类似，向控制台输出信息。但它增加了时间戳等一些特性。</h4><pre><code>例：向控制台输出hello world。 
+</code></pre><p>   NSString *str = @”hello world”;<br>   NSLog(@”%@”, str);<br>   %@表示输出NSString类型； </p>
+<p>   双引号的前面的@表示这双引号中的字符串应该作为cocoa的NSString元素来处理。</p>
+<h4 id="5-布尔类型BOOL-值为YES-NO"><a href="#5-布尔类型BOOL-值为YES-NO" class="headerlink" title="#### 5. 布尔类型BOOL:值为YES,NO;"></a>#### 5. 布尔类型BOOL:值为YES,NO;</h4><h4 id="6-objective-c中的方括号："><a href="#6-objective-c中的方括号：" class="headerlink" title="6. objective-c中的方括号："></a>6. objective-c中的方括号：</h4><pre><code>1) 用于通知某个对象该做什么。 
+2) 方括号内第一项是对象，其余部分是你需要对象执行的操作。 
+
+3) 在objective-c中通知对象执行某种操作，称为发送消息。（也叫调用方法）
+</code></pre><h4 id="7-标识符id-是一种泛型，用于表示任何种类的对象。"><a href="#7-标识符id-是一种泛型，用于表示任何种类的对象。" class="headerlink" title="7. 标识符id:是一种泛型，用于表示任何种类的对象。"></a>7. 标识符id:是一种泛型，用于表示任何种类的对象。</h4><h4 id="8-类声明-interface："><a href="#8-类声明-interface：" class="headerlink" title="8. 类声明@interface："></a>8. 类声明@interface：</h4><pre><code>例： 
+@interface Circle:NSObject   //为Circle类定义接口；NSObject表示是父类。 
+{//以下是数据成员 
+   ShapeColor fillColor; 
+   ShapeRect bounds; 
+} 
+//以下是方法声明 
+-(void) setFillColor: (ShapeColor) fillColor;  //前面的短线表明这是方法声明 
+                               //短线后面是方法的返回类型 
+                               //接着是方法名 
+//冒号后面是参数，其中(ShapeColor)是参数类型， 
+fillColor是参数名 
+-(void) setBounds:(ShapeRect) bounds; 
+-(void) draw; 
+//减号就是普通函数 
+加号就是静态函数 
+
+@end     //结束声明
+</code></pre><h4 id="9-self，隐藏对象self对应于C中的this。"><a href="#9-self，隐藏对象self对应于C中的this。" class="headerlink" title="#### 9. self，隐藏对象self对应于C中的this。"></a>#### 9. self，隐藏对象self对应于C中的this。</h4><p>   Self-&gt;fillcolor来访问成员变量。</p>
+<h4 id="10-调用写好的类和类函数："><a href="#10-调用写好的类和类函数：" class="headerlink" title="10. 调用写好的类和类函数："></a>10. 调用写好的类和类函数：</h4><pre><code>//创建新对象，使用缺省初始化函数 
+Bank *bankDefault = [[Bank alloc] init]; 
+//调用方法： 
+[bank addAmount: 1]; 
+[bank print]; 
+// 释放对象： 
+
+[bankDefault free];
+</code></pre><h4 id="11-两个参数的方法："><a href="#11-两个参数的方法：" class="headerlink" title="11. 两个参数的方法："></a>11. 两个参数的方法：</h4><pre><code>-(void) setTire: (Tire *) tire  //声明 
+  atIndex: (int) index; 
+//使用 
+[car setTire:tire atIndex:2]; 
+
+objective-c高级特性：
+</code></pre><h4 id="12-继承"><a href="#12-继承" class="headerlink" title="12. 继承"></a>12. 继承</h4><pre><code>Objective-c不支持多继承。 
+Super 关键字：调用该类的父类； 
+
+超类：父类的另一种说法。
+</code></pre><h4 id="13-自定义NSLog-输出"><a href="#13-自定义NSLog-输出" class="headerlink" title="13. 自定义NSLog()输出:"></a>13. 自定义NSLog()输出:</h4><pre><code>在类中添加description方法就可以自定义NSLog()如何输出对象。 
+@implementation Tire 
+-(NSString *) description 
+{ 
+    Return (@”I am a tire.”); 
+} 
+Main() 
+{ 
+    NSLog(@”%@”,tire[0]); 
+
+}
+</code></pre><h4 id="13-Foundation-kit"><a href="#13-Foundation-kit" class="headerlink" title="13. Foundation kit:"></a>13. Foundation kit:</h4><pre><code>Cocoa是由两部分框架组成的：foundation kit [包括一些基础类]和 application kit.【包括用户接口对象和高级类】 
+创建字符串： 
+1） NSString *test; 
+    test=[NSString stringWithFormat:@&quot;i&apos;m %d years old!&quot;,23]; 
+    若在声明方法时在方法前面添加了加号，那就表示把这个方法定义为类方法【这个方法属于类对象，而不是类的       实例对象。 
+NSArray类：可以存放任意类型的对象. 
+它有两个限制： 
+    1. 它只能存储objective-c的对象，但不能存储C中的基本数据类型，如int , float, enum, struct等。 
+    2.不能存储nil(对象的零值或NULL值)；【因为在创建NSArray时，要在列表结尾添加nil代表列表结束。】 
+2） 创建NSArray： 
+    NSArray *array; 
+    array=[NSArray arrayWithObjects:@&quot;one&quot;,@&quot;two&quot;,nil];  
+    NSString, NSMutableString类； 
+    NSString是不可变的，即一旦创建完成，就不能通过删除字符或添加字符的方式来改变它； 
+    而NSMutableString是可变的。 
+    NSArray, NSMutableArray类； 
+    NSEnumerator枚举； 
+    NSEnumerator *enum; 
+    enum=[array objectEnumerator]; 
+    Id thingie; 
+    While(thingie=[enumerator nextObject]){} 
+    NSDictionary:字典（关键字及其定义的集合。）【也成为散列表，关联数组】，NSMutableDictionary类； 
+    NSNumber:用来包装基本数据类型，如int ,char, float, bool;【将一个基本类型的数据包装成对象叫做装箱。】 
+    NSValue:它可以包装任何类，NSNumber是它的子类。 
+    NSNull: 
+    在cocoa中看到“CF”字样时，就表示它是苹果公司的Core Foundation 框架相关的内容。 
+
+    NSAutoreleasePool:自动释放内存池。
+</code></pre><h4 id="14-内存管理"><a href="#14-内存管理" class="headerlink" title="14. 内存管理"></a>14. 内存管理</h4><pre><code>每个对象都有一个与之关联的引用计数（也叫保留计数） 
+当使用alloc, new 方法或通过 copy消息（生成接收对象的一个副本）创建一个对象时，对象的引用计数值被设为1； 
+给对象发retain消息时，增加该值； 
+发送release消息时，减少该值； 
+当一个对象的引用计数值变为0时，objective-c会自动向对象发送一条dealloc消息。销毁该对象。 
+你可以在自己的对象中重写该方法， 
+使用retainCount消息，可以获取引用计数器的值。 
+-(id) retain; 
+-(void) release; 
+-(unsigned) retainCount;     
+自动释放池：autorelease pool; 
+创建： 
+NSAutoreleasePool *pool; 
+pool=[[NSAutoreleasePool alloc] init]; 
+销毁： 
+[pool release]; 
+注意：xcode自动生成的代码，销毁pool池时，使用的是[pool drain],drain方法只是清空释放池，但不销毁pool.所以      在自己编写代码时还是使用 
+release. 
+而且，drain只适用于MAC OS 10.4以上的版本，而release适用于所有版本。 
+只有在向某个对象发送autorelease消息时，该对象才会添加到NSAutoreleasepool中，才会被自动释放。 
+如：[car autorelease]; 
+内存管理黄金准则： 
+    只有通过alloc, new和 copy方法创建的对象，才需要程序员负责向该对象发送release或autorelease消息。 
+而通过其他方法获得的对象，则默认为已经被设置为自动释放，所以不需要程序员做任何操作了。 
+在objective-c 2.0中有垃圾回收机制， 
+如果要对某个项目使用垃圾回收： 
+项目信息--build选项卡--查询&quot;garb&quot;,出现“objective-c Garbage Collection”,将其值设置为“required[-fobjc-gc-only]”
+启用垃圾回收后，通常的内存管理命令全都变成了空操作指令，不执行任何操作。 
+
+开发iphone软件，不能使用垃圾回收。
+</code></pre><h4 id="15"><a href="#15" class="headerlink" title="15."></a>15.</h4><pre><code>对象初始化 
+两种创建新对象的方法： 
+[类名 new] 
+[[类名 alloc] init] 
+这两种方法是等价的，但cocoa的惯例是使用后者。 
+alloc在为对象分配空间的同时，将这块内存初始化为0； 
+Init方法：初始化实例变量，使对象处于可用状态。[返回类型为id,  返回的值描述了被初始化的对象] 
+使用new创建新对象时，系统要完成两个步骤： 
+    1.  为对象分配内存，即对象获得一个用来存放其实例变量的内存块； 
+
+    2.  自动调用init方法，让该对象处于可用状态。
+</code></pre><h4 id="16"><a href="#16" class="headerlink" title="16."></a>16.</h4><pre><code>objective-c 2.0的新特性【只适用于mac os x10.5及以上】 
+@property :表示声明了对象的属性。这样就不用再写属性的访问器了。 
+（他有copy, retain, readwrite, readonly等属性） 
+
+点表达式
+</code></pre><h4 id="17"><a href="#17" class="headerlink" title="17."></a>17.</h4><pre><code>类别 
+类别（category）是一种为现有的类添加新方法的方式。 
+类别的声明： 
+@interface NSString (NumberConvenience) //类名 （类别名） 
+-(NSNumber) lengthAsNumber;            //扩充方法声明 
+@end 
+使用时使用原来的类名，就可以调用他的所有类别中的方法。 
+类别的局限性： 
+    1.    不能向类中添加新的实例变量； 
+    2.    在类别中的方法若与类中现有的方法重名，则类中的方法不可用，被类别中的新方法取代。 
+类别的作用： 
+    1.    将类的实现分散到多个文件或框架中； 
+    2.    创建对私有方法的前向引用； 
+【Cocoa中没有真正的私有方法，则实现私有方法类似功能的方法为： 
+先在类别中声明方法；然后到现有类的实现中实现该方法。 
+这样这个类中的其他方法可以使用该方法，而其他外部的类就不会知道该方法的存在了。】 
+    3.    向对象添加非正式协议。 
+    【创建一个NSObject的类别称为创建一个非正式协议。】 
+    委托delegate是一种对象，另一个类的对象会要求委托对象执行它的某些操作。 
+    受委托对象在某个时间（某个事件触发）时，会自动通知委托对象执行委托方法。 
+    选择器：@selector（）:选择器只是一个方法名称，但它以objective-c运行时使用的特殊方式编码，以快速执行查                询。圆括号中的内容是方法名。 
+    所以Car类的setEngine:方法的选择器是：@selector（setEngine: 
+    受委托对象如何知道其委托对象是否能处理它（受委托对象）发送给它（委托对象）的消息？ 
+
+，受委托对象先检查委托对象，询问其是否能响应该选择器。如果能，则向它发送消息。
+</code></pre><h4 id="18"><a href="#18" class="headerlink" title="18."></a>18.</h4><pre><code>协议： 
+正式协议是一个命名的方法列表。 
+采用协议意味着必须实现该协议的所有方法。否则，编译器会发出警告。 
+正式协议就像JAVA中的接口一样。 
+声明协议： 
+@protocal NSCopying 
+- (id) copywithzone:(NSZone *) zone; //方法列表 
+@end 
+采用协议： 
+@interface Car:NSObject &lt;NSCopying,NSCoding&gt; //中括号中是要实现的协议列表 
+{//实例变量列表} 
+//方法列表 
+@end 
+</code></pre>
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+            <div class="shang_tit">
+              <p>纯属好玩</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫">
+            </div>
+              <div class="pay_explain">扫码打赏，你说多少就多少</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝"></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信"></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/02/21/objective-c初学笔记/">objective-c初学笔记</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 启码匠 的个人博客">启码匠</a></p>
+        <p><span>发布时间:</span>2017年02月21日 - 21时46分</p>
+        <p><span>最后更新:</span>2018年12月31日 - 15时40分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/02/21/objective-c初学笔记/" title="objective-c初学笔记">https://qimajiang.com/2017/02/21/objective-c初学笔记/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://qimajiang.com/2017/02/21/objective-c初学笔记/　　作者: 启码匠" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target="_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2017/02/25/树莓派搭建反向代理，实现远程管理/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          树莓派搭建反向代理，实现远程管理
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/20/web-入门必看指南/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">web 入门必看指南</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-在objective-c中使用＃import-lt-gt-导入系统头文件，＃import””导入用户头文件-＃import可以保证头文件只被包含一次。"><span class="toc-number">1.</span> <span class="toc-text">1. 在objective-c中使用＃import&lt;&gt;导入系统头文件，＃import””导入用户头文件,＃import可以保证头文件只被包含一次。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-基本数据类型总结"><span class="toc-number">2.</span> <span class="toc-text">2.  基本数据类型总结</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-语句"><span class="toc-number">3.</span> <span class="toc-text">3. 语句</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-NSlog-函数：与printf-类似，向控制台输出信息。但它增加了时间戳等一些特性。"><span class="toc-number">4.</span> <span class="toc-text">4. NSlog()函数：与printf()类似，向控制台输出信息。但它增加了时间戳等一些特性。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-布尔类型BOOL-值为YES-NO"><span class="toc-number">5.</span> <span class="toc-text">#### 5. 布尔类型BOOL:值为YES,NO;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-objective-c中的方括号："><span class="toc-number">6.</span> <span class="toc-text">6. objective-c中的方括号：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-标识符id-是一种泛型，用于表示任何种类的对象。"><span class="toc-number">7.</span> <span class="toc-text">7. 标识符id:是一种泛型，用于表示任何种类的对象。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-类声明-interface："><span class="toc-number">8.</span> <span class="toc-text">8. 类声明@interface：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-self，隐藏对象self对应于C中的this。"><span class="toc-number">9.</span> <span class="toc-text">#### 9. self，隐藏对象self对应于C中的this。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-调用写好的类和类函数："><span class="toc-number">10.</span> <span class="toc-text">10. 调用写好的类和类函数：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-两个参数的方法："><span class="toc-number">11.</span> <span class="toc-text">11. 两个参数的方法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-继承"><span class="toc-number">12.</span> <span class="toc-text">12. 继承</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-自定义NSLog-输出"><span class="toc-number">13.</span> <span class="toc-text">13. 自定义NSLog()输出:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-Foundation-kit"><span class="toc-number">14.</span> <span class="toc-text">13. Foundation kit:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#14-内存管理"><span class="toc-number">15.</span> <span class="toc-text">14. 内存管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#15"><span class="toc-number">16.</span> <span class="toc-text">15.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#16"><span class="toc-number">17.</span> <span class="toc-text">16.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#17"><span class="toc-number">18.</span> <span class="toc-text">17.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#18"><span class="toc-number">19.</span> <span class="toc-text">18.</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <div id="gitments"></div>
+<script src="/js/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+      id:  'objective-c初学笔记',
+      owner: 'moxun33',
+      repo: 'moxun33.github.io',
+      oauth: {
+        client_id: 'b7d60b111f8dd152f6f9',
+        client_secret: 'd9e941da2e552874785b833e84f43b7534a7527d',
+      },
+    })
+    gitment.render('gitments')
+</script>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/02/25/树莓派搭建反向代理，实现远程管理/" title="上一篇: 树莓派搭建反向代理，实现远程管理">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2017/02/20/web-入门必看指南/" title="下一篇: web 入门必看指南">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/11/21/React应用优化/">React应用优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/25/浏览器持久化存储那些事/">浏览器持久化存储那些事</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/14/使用React一年的简单总结/">使用React一年的简单总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/21/TypeScript开发笔记/">TypeScript开发笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/28/TypeScript 与 React /">TypeScript 与 React</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/24/使用 Eslint 和 Prettier美化 React 代码/">使用 ESLint、Prettier 和 StyleLint美化 React 代码</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/19/SVG入门与实践/">SVG入门与实践</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/25/搭建前端异常监控服务/">搭建前端异常监控系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/24/构建企业内部React组件库/">构建企业内部React组件库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/10/前端PDF预览那些事/">前端预览PDF那些事</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/28/开发一个美剧自动嗅探下载器-TVDragon-下/">开发一个美剧自动嗅探下载器:TVDragon(下)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/16/开发一个美剧自动嗅探下载器-上-/">开发一个美剧自动嗅探下载器:TVDragon(上)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/18/使用 Goutte爬取代理 IP 池/">使用 Goutte爬取 IP 代理池</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/28/使用Jenkins自动部署React前端项目/">使用Jenkins自动部署React前端项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/21/React开发笔记/">React开发笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/03/mac下使用Vagrant-构建跨平台开发环境/">mac 下使用Vagrant 构建跨平台开发环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/18/web 的几种通信方式/">web 的几种通信方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/08/聊聊-web-中的网络请求/">聊聊 web 中的网络请求</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/13/手把手教你用-PHP-拼接微信好友头像/">手把手教你用 PHP 拼接微信好友头像</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/27/闲谈-PHP7新特性/">闲谈 PHP7新特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/04/使用-ngrok-实现内网穿透/">使用 ngrok 实现内网穿透</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/18/postgresql-数据库笔记/">postgresql 数据库笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/25/PHP工匠历险记-开启篇-一、搭建PHP开发环境/">搭建PHP开发环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/25/树莓派搭建反向代理，实现远程管理/">树莓派搭建反向代理，实现远程管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/21/objective-c初学笔记/">objective-c初学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/20/web-入门必看指南/">web 入门必看指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/20/mac下-搭建Cordova-ionic-AngularJs开发环境/">mac下 搭建Cordova+ionic+AngularJs开发环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/18/树莓派3安装-Docker记录/">树莓派3安装 Docker记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/17/hexo-常用命令/">hexo常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/23/Thinkphp微信支付开发坑/">Thinkphp微信支付开发坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/23/ubuntu64位安装32位依赖库，并安装njit-client/">ubuntu64位安装32位依赖库，并安装njit-client</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/七牛云和又拍云的比较/">七牛云和又拍云的比较</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/MAC环境下用Clover制作原版安装U盘/">MAC环境下用Clover制作原版安装U盘</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/20/editormd/">editormd 的使用介绍</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+        
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2018 启码匠
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+    </div>
+    <script>
+            (function(){
+                var bp = document.createElement('script');
+                var curProtocol = window.location.protocol.split(':')[0];
+                if (curProtocol === 'https') {
+                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+                }
+                else {
+                    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+                }
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(bp, s);
+            })();
+            </script>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 20;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  <script type="text/javascript">
+    window.onload = function(){
+      document.getElementById("search").onclick = function(){
+          console.log("search")
+          search();
+      }
+    }
+    function search(){
+      (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+      (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+      e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+      })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+      _st('install','A1Pz-LKMXbrzcFg2FWi6','2.0.0');
+    }
+  </script>
+
+  </div>
+</body>
+</html>

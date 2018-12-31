@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>闲谈 PHP7新特性 | 启码匠 - 磨刀霍霍向编程</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="PHP7已经发布有段时间了，其最大的特点是快。其性能高于 HHVM， 是 PHP5.6的两倍。本人就整理一些PHP7.0.x的新特性，也当做自己学习和复习PHP7。">
+<meta name="keywords" content="PHP,PHP7">
+<meta property="og:type" content="article">
+<meta property="og:title" content="闲谈 PHP7新特性">
+<meta property="og:url" content="https://qimajiang.com/2017/05/27/闲谈-PHP7新特性/index.html">
+<meta property="og:site_name" content="启码匠 - 磨刀霍霍向编程">
+<meta property="og:description" content="PHP7已经发布有段时间了，其最大的特点是快。其性能高于 HHVM， 是 PHP5.6的两倍。本人就整理一些PHP7.0.x的新特性，也当做自己学习和复习PHP7。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-31T07:40:43.394Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="闲谈 PHP7新特性">
+<meta name="twitter:description" content="PHP7已经发布有段时间了，其最大的特点是快。其性能高于 HHVM， 是 PHP5.6的两倍。本人就整理一些PHP7.0.x的新特性，也当做自己学习和复习PHP7。">
+  
+    <link rel="alternative" href="/atom.xml" title="启码匠 - 磨刀霍霍向编程" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet">
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: true
+      }
+  </script>
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.png" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">启码匠</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">磨刀霍霍向编程</p>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="search" placeholder=" Search...">
+            </form>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/Home">博客首页</a></li>
+                        
+                            <li><a href="/tags">标签云</a></li>
+                        
+                            <li><a href="/about">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="mailto:&#109;&#120;&#120;&#48;&#56;&#48;&#55;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/moxun33" title="github">github</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Babel/" style="font-size: 10px;">Babel</a> <a href="/tags/Clover/" style="font-size: 10px;">Clover</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/ESLint/" style="font-size: 10px;">ESLint</a> <a href="/tags/Goutte/" style="font-size: 10px;">Goutte</a> <a href="/tags/Homestead/" style="font-size: 10px;">Homestead</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/LAMP/" style="font-size: 10px;">LAMP</a> <a href="/tags/MAC-OSX86/" style="font-size: 10px;">MAC OSX86</a> <a href="/tags/Object-C/" style="font-size: 10px;">Object C</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/PHP/" style="font-size: 18px;">PHP</a> <a href="/tags/PHP7/" style="font-size: 10px;">PHP7</a> <a href="/tags/PostgreSQL/" style="font-size: 10px;">PostgreSQL</a> <a href="/tags/Prettier/" style="font-size: 10px;">Prettier</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/SVG/" style="font-size: 10px;">SVG</a> <a href="/tags/ThinkPHP/" style="font-size: 10px;">ThinkPHP</a> <a href="/tags/TypeScript/" style="font-size: 12px;">TypeScript</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/U盘/" style="font-size: 10px;">U盘</a> <a href="/tags/Vagrant/" style="font-size: 10px;">Vagrant</a> <a href="/tags/Webpack/" style="font-size: 10px;">Webpack</a> <a href="/tags/autossh/" style="font-size: 10px;">autossh</a> <a href="/tags/editor-md/" style="font-size: 10px;">editor.md</a> <a href="/tags/hexo命令/" style="font-size: 10px;">hexo命令</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/mac系统/" style="font-size: 10px;">mac系统</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/ngrok/" style="font-size: 10px;">ngrok</a> <a href="/tags/web/" style="font-size: 14px;">web</a> <a href="/tags/七牛云/" style="font-size: 10px;">七牛云</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/入门指南/" style="font-size: 10px;">入门指南</a> <a href="/tags/内网穿透/" style="font-size: 10px;">内网穿透</a> <a href="/tags/前端/" style="font-size: 16px;">前端</a> <a href="/tags/又拍云/" style="font-size: 10px;">又拍云</a> <a href="/tags/反向代理/" style="font-size: 10px;">反向代理</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/开发环境/" style="font-size: 10px;">开发环境</a> <a href="/tags/微信/" style="font-size: 12px;">微信</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/树莓派-raspberrypi/" style="font-size: 12px;">树莓派 raspberrypi</a> <a href="/tags/浏览器/" style="font-size: 10px;">浏览器</a> <a href="/tags/爬虫/" style="font-size: 14px;">爬虫</a> <a href="/tags/监控/" style="font-size: 10px;">监控</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxun33.github.io/">name</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注后端开发和前端开发，偶尔搞搞 iOS 开发，不会拘泥现有的开发要素，热衷研究新技术(语言)，偶尔写文。</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">启码匠</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">启码匠</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">磨刀霍霍向编程</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/Home">博客首页</a></li>
+                
+                    <li><a href="/tags">标签云</a></li>
+                
+                    <li><a href="/about">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="mailto:&#109;&#120;&#120;&#48;&#56;&#48;&#55;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/moxun33" title="github">github</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-闲谈-PHP7新特性" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/27/闲谈-PHP7新特性/" class="article-date">
+      <time datetime="2017-05-27T13:09:12.000Z" itemprop="datePublished">2017-05-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      闲谈 PHP7新特性
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP7/">PHP7</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <ul>
+<li>PHP7已经发布有段时间了，其最大的特点是快。其性能高于 HHVM， 是 PHP5.6的两倍。本人就整理一些PHP7.0.x的新特性，也当做自己学习和复习PHP7。<a id="more"></a>
+<h3 id="0、可变参数"><a href="#0、可变参数" class="headerlink" title="0、可变参数"></a>0、可变参数</h3><h4 id="PHP7允许传入可变个数的同类型参数"><a href="#PHP7允许传入可变个数的同类型参数" class="headerlink" title="PHP7允许传入可变个数的同类型参数"></a>PHP7允许传入可变个数的同类型参数</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span>  <span class="title">sum</span><span class="params">(int ...$ints)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> array_sum($ints);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var_dump(sum(<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>));</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int(<span class="number">22</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="1、标量类型声明"><a href="#1、标量类型声明" class="headerlink" title="1、标量类型声明"></a>1、标量类型声明</h3><h4 id="标量类型声明-有两种模式-强制-默认-和-严格模式。-现在可以使用下列类型参数（无论用强制模式还是严格模式）：-字符串-string-整数-int-浮点数-float-以及布尔值-bool-。它们扩充了PHP5中引入的其他类型：类名，接口，数组和-回调类型。"><a href="#标量类型声明-有两种模式-强制-默认-和-严格模式。-现在可以使用下列类型参数（无论用强制模式还是严格模式）：-字符串-string-整数-int-浮点数-float-以及布尔值-bool-。它们扩充了PHP5中引入的其他类型：类名，接口，数组和-回调类型。" class="headerlink" title="标量类型声明 有两种模式: 强制 (默认) 和 严格模式。 现在可以使用下列类型参数（无论用强制模式还是严格模式）： 字符串(string), 整数 (int), 浮点数 (float), 以及布尔值 (bool)。它们扩充了PHP5中引入的其他类型：类名，接口，数组和 回调类型。"></a>标量类型声明 有两种模式: 强制 (默认) 和 严格模式。 现在可以使用下列类型参数（无论用强制模式还是严格模式）： 字符串(string), 整数 (int), 浮点数 (float), 以及布尔值 (bool)。它们扩充了PHP5中引入的其他类型：类名，接口，数组和 回调类型。</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// 强制模式</span></span><br><span class="line"><span class="function"><span class="keyword">function</span>  <span class="title">sum</span><span class="params">(int ...$ints)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> array_sum($ints);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var_dump(sum(<span class="number">4</span>, <span class="string">'5'</span>, <span class="number">6.1</span>));</span><br></pre></td></tr></table></figure>
+<h4 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int(<span class="number">15</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="要使用严格模式需要在文件顶部添加-declare-strict-types-1-在严格模式中，只有一个与类型声明完全相符的变量才会被接受，否则将会抛出一个TypeError。-严格类型仅用于标量类型声明，也正是因为如此，这需要PHP-7-0-0-或更新版本，因为标量类型声明也是在那个版本中添加的。"><a href="#要使用严格模式需要在文件顶部添加-declare-strict-types-1-在严格模式中，只有一个与类型声明完全相符的变量才会被接受，否则将会抛出一个TypeError。-严格类型仅用于标量类型声明，也正是因为如此，这需要PHP-7-0-0-或更新版本，因为标量类型声明也是在那个版本中添加的。" class="headerlink" title="要使用严格模式需要在文件顶部添加 declare(strict_types=1);在严格模式中，只有一个与类型声明完全相符的变量才会被接受，否则将会抛出一个TypeError。  严格类型仅用于标量类型声明，也正是因为如此，这需要PHP 7.0.0 或更新版本，因为标量类型声明也是在那个版本中添加的。"></a>要使用严格模式需要在文件顶部添加 declare(strict_types=1);在严格模式中，只有一个与类型声明完全相符的变量才会被接受，否则将会抛出一个TypeError。  严格类型仅用于标量类型声明，也正是因为如此，这需要PHP 7.0.0 或更新版本，因为标量类型声明也是在那个版本中添加的。</h4><p>例子<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">declare</span>(strict_types=<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span><span class="params">(int $m, int $n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> $m + $n;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var_dump(sum(<span class="number">0</span>, <span class="number">1</span>));</span><br><span class="line">var_dump(sum(<span class="number">0.5</span>, <span class="number">1.5</span>));</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="输出-2"><a href="#输出-2" class="headerlink" title="输出"></a>输出</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">Fatal error: Uncaught TypeError: Argument <span class="number">1</span> passed to sum() must be of the type integer, float given,  </span><br><span class="line">Stack trace:</span><br><span class="line"><span class="comment">#0 -(9): sum(0.5, 1.5)</span></span><br></pre></td></tr></table></figure>
+<h3 id="3、函数返回类型声明"><a href="#3、函数返回类型声明" class="headerlink" title="3、函数返回类型声明"></a>3、函数返回类型声明</h3><h4 id="PHP-7-增加了对返回类型声明的支持。函数返回值的类型必须与声明的类型一致，-否则会抛出错误。"><a href="#PHP-7-增加了对返回类型声明的支持。函数返回值的类型必须与声明的类型一致，-否则会抛出错误。" class="headerlink" title="PHP 7 增加了对返回类型声明的支持。函数返回值的类型必须与声明的类型一致， 否则会抛出错误。"></a>PHP 7 增加了对返回类型声明的支持。函数返回值的类型必须与声明的类型一致， 否则会抛出错误。</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">arraysSum</span><span class="params">(array ...$arrays)</span>: <span class="title">array</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> array_map(<span class="function"><span class="keyword">function</span><span class="params">(array $array)</span>: <span class="title">int</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> array_sum($array);</span><br><span class="line">    &#125;, $arrays);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">print_r(arraysSum([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>], [<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]));</span><br></pre></td></tr></table></figure>
+<h4 id="输出-3"><a href="#输出-3" class="headerlink" title="输出"></a>输出</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Array</span></span><br><span class="line">(</span><br><span class="line">    [<span class="number">0</span>] =&gt; <span class="number">6</span></span><br><span class="line">    [<span class="number">1</span>] =&gt; <span class="number">15</span></span><br><span class="line">    [<span class="number">2</span>] =&gt; <span class="number">24</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">#### 由于近期有学习 Swift，这种写法和 Swift 类似：</span></span><br><span class="line">在 Swift 中</span><br><span class="line">```php</span><br><span class="line">func test(a: String) -&gt; String &#123; </span><br><span class="line">    let b = a + <span class="string">"b"</span></span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3、null合并运算符"><a href="#3、null合并运算符" class="headerlink" title="3、null合并运算符"></a>3、null合并运算符</h3><h4 id="PHP7中添加了null合并运算符-这个语法糖。如果变量存在且值不为NULL，-它就会返回自身的值，否则返回它的第二个操作数。"><a href="#PHP7中添加了null合并运算符-这个语法糖。如果变量存在且值不为NULL，-它就会返回自身的值，否则返回它的第二个操作数。" class="headerlink" title="PHP7中添加了null合并运算符 (??) 这个语法糖。如果变量存在且值不为NULL， 它就会返回自身的值，否则返回它的第二个操作数。"></a>PHP7中添加了null合并运算符 (??) 这个语法糖。如果变量存在且值不为NULL， 它就会返回自身的值，否则返回它的第二个操作数。</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// Fetches the value of $_GET['user'] and returns 'nobody'</span></span><br><span class="line"><span class="comment">// if it does not exist.</span></span><br><span class="line">$username = $_GET[<span class="string">'user'</span>] ?? <span class="string">'nobody'</span>;</span><br><span class="line"><span class="comment">// This is equivalent to:</span></span><br><span class="line">$username = <span class="keyword">isset</span>($_GET[<span class="string">'user'</span>]) ? $_GET[<span class="string">'user'</span>] : <span class="string">'nobody'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Coalesces can be chained: this will return the first</span></span><br><span class="line"><span class="comment">// defined value out of $_GET['user'], $_POST['user'], and</span></span><br><span class="line"><span class="comment">// 'nobody'.</span></span><br><span class="line">$username = $_GET[<span class="string">'user'</span>] ?? $_POST[<span class="string">'user'</span>] ?? <span class="string">'nobody'</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="4、太空船操作符（组合比较符）"><a href="#4、太空船操作符（组合比较符）" class="headerlink" title="4、太空船操作符（组合比较符）"></a>4、太空船操作符（组合比较符）</h3><h4 id="太空船操作符用于比较两个表达式。当-a小于、等于或大于-b时它分别返回-1、0或1。"><a href="#太空船操作符用于比较两个表达式。当-a小于、等于或大于-b时它分别返回-1、0或1。" class="headerlink" title="太空船操作符用于比较两个表达式。当$a小于、等于或大于$b时它分别返回-1、0或1。"></a>太空船操作符用于比较两个表达式。当$a小于、等于或大于$b时它分别返回-1、0或1。</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// 整数</span></span><br><span class="line"><span class="keyword">echo</span> <span class="number">1</span> &lt;=&gt; <span class="number">1</span>; <span class="comment">// 0</span></span><br><span class="line"><span class="keyword">echo</span> <span class="number">1</span> &lt;=&gt; <span class="number">2</span>; <span class="comment">// -1</span></span><br><span class="line"><span class="keyword">echo</span> <span class="number">2</span> &lt;=&gt; <span class="number">1</span>; <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 浮点数</span></span><br><span class="line"><span class="keyword">echo</span> <span class="number">1.5</span> &lt;=&gt; <span class="number">1.5</span>; <span class="comment">// 0</span></span><br><span class="line"><span class="keyword">echo</span> <span class="number">1.5</span> &lt;=&gt; <span class="number">2.5</span>; <span class="comment">// -1</span></span><br><span class="line"><span class="keyword">echo</span> <span class="number">2.5</span> &lt;=&gt; <span class="number">1.5</span>; <span class="comment">// 1</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// 字符串</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">"a"</span> &lt;=&gt; <span class="string">"a"</span>; <span class="comment">// 0</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">"a"</span> &lt;=&gt; <span class="string">"b"</span>; <span class="comment">// -1</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">"b"</span> &lt;=&gt; <span class="string">"a"</span>; <span class="comment">// 1</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="5、通过-define-定义常量数组"><a href="#5、通过-define-定义常量数组" class="headerlink" title="5、通过 define() 定义常量数组"></a>5、通过 define() 定义常量数组</h3><h4 id="PHP7中Array-类型的常量现在可以通过-define-来定义。在-PHP5-6-中仅能通过-const-定义。"><a href="#PHP7中Array-类型的常量现在可以通过-define-来定义。在-PHP5-6-中仅能通过-const-定义。" class="headerlink" title="PHP7中Array 类型的常量现在可以通过 define() 来定义。在 PHP5.6 中仅能通过 const 定义。"></a>PHP7中Array 类型的常量现在可以通过 define() 来定义。在 PHP5.6 中仅能通过 const 定义。</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">define(<span class="string">'ANIMALS'</span>, [</span><br><span class="line">    <span class="string">'dog'</span>,</span><br><span class="line">    <span class="string">'cat'</span>,</span><br><span class="line">    <span class="string">'bird'</span></span><br><span class="line">]);</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> ANIMALS[<span class="number">1</span>]; <span class="comment">// 输出 "cat"</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="5、匿名类"><a href="#5、匿名类" class="headerlink" title="5、匿名类"></a>5、匿名类</h3><h4 id="PHP7支持通过new-class-来实例化一个匿名类，这可以用来替代一些“用后即焚”的完整类定义。"><a href="#PHP7支持通过new-class-来实例化一个匿名类，这可以用来替代一些“用后即焚”的完整类定义。" class="headerlink" title="PHP7支持通过new class 来实例化一个匿名类，这可以用来替代一些“用后即焚”的完整类定义。"></a>PHP7支持通过new class 来实例化一个匿名类，这可以用来替代一些“用后即焚”的完整类定义。</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Logger</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">log</span><span class="params">(string $msg)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $logger;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getLogger</span><span class="params">()</span>: <span class="title">Logger</span> </span>&#123;</span><br><span class="line">         <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;logger;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">setLogger</span><span class="params">(Logger $logger)</span> </span>&#123;</span><br><span class="line">         <span class="keyword">$this</span>-&gt;logger = $logger;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$app = <span class="keyword">new</span> Application;</span><br><span class="line">$app-&gt;setLogger(<span class="keyword">new</span> <span class="class"><span class="keyword">class</span> <span class="keyword">implements</span> <span class="title">Logger</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">log</span><span class="params">(string $msg)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> $msg;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">var_dump($app-&gt;getLogger());</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="6、use-批量声明"><a href="#6、use-批量声明" class="headerlink" title="6、use 批量声明"></a>6、use 批量声明</h3><h4 id="PHP-7-中-use-可以在一句话中声明多个类或函数或-const-了："><a href="#PHP-7-中-use-可以在一句话中声明多个类或函数或-const-了：" class="headerlink" title="PHP 7 中 use 可以在一句话中声明多个类或函数或 const 了："></a>PHP 7 中 use 可以在一句话中声明多个类或函数或 const 了：</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;php </span><br><span class="line"><span class="keyword">use</span> <span class="title">some</span>/<span class="title">namespace</span>/&#123;<span class="title">ClassA</span>, <span class="title">ClassB</span>, <span class="title">ClassC</span> <span class="title">as</span> <span class="title">C</span>&#125;; </span><br><span class="line"><span class="keyword">use</span> <span class="title">function</span> <span class="title">some</span>/<span class="title">namespace</span>/&#123;<span class="title">fn_a</span>, <span class="title">fn_b</span>, <span class="title">fn_c</span>&#125;; </span><br><span class="line"><span class="keyword">use</span> <span class="title">const</span> <span class="title">some</span>/<span class="title">namespace</span>/&#123;<span class="title">ConstA</span>, <span class="title">ConstB</span>, <span class="title">ConstC</span>&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="但还是要写出每个类或函数或-const-的名称（并没有像-python-一样的-from-some-import-的方法）。需要留意的问题是：如果你使用的是基于-composer-和-PSR-4-的框架，这种写法是否能成功的加载类文件？其实是可以的，composer-注册的自动加载方法是在类被调用的时候根据类的命名空间去查找位置，这种写法对其没有影响。"><a href="#但还是要写出每个类或函数或-const-的名称（并没有像-python-一样的-from-some-import-的方法）。需要留意的问题是：如果你使用的是基于-composer-和-PSR-4-的框架，这种写法是否能成功的加载类文件？其实是可以的，composer-注册的自动加载方法是在类被调用的时候根据类的命名空间去查找位置，这种写法对其没有影响。" class="headerlink" title="但还是要写出每个类或函数或 const 的名称（并没有像 python 一样的 from some import * 的方法）。需要留意的问题是：如果你使用的是基于 composer 和 PSR-4 的框架，这种写法是否能成功的加载类文件？其实是可以的，composer 注册的自动加载方法是在类被调用的时候根据类的命名空间去查找位置，这种写法对其没有影响。"></a>但还是要写出每个类或函数或 const 的名称（并没有像 python 一样的 from some import * 的方法）。需要留意的问题是：如果你使用的是基于 composer 和 PSR-4 的框架，这种写法是否能成功的加载类文件？其实是可以的，composer 注册的自动加载方法是在类被调用的时候根据类的命名空间去查找位置，这种写法对其没有影响。</h4><h3 id="7、其他特性"><a href="#7、其他特性" class="headerlink" title="7、其他特性"></a>7、其他特性</h3><h4 id="其他的特性包括但不限于"><a href="#其他的特性包括但不限于" class="headerlink" title="其他的特性包括但不限于"></a>其他的特性包括但不限于</h4><p>1、Int64支持，统一不同平台下的整型长度，字符串和文件上传都支持大于2GB。<br>2、统一变量语法（Uniform variable syntax）。<br>3、Unicode字符格式支持（\u{xxxxx}）<br>4、移除了一些老的不在支持的SAPI（服务器端应用编程端口）和扩展</p>
+<h4 id="有兴趣直接访问官网-http-php-net-manual-zh-migration70-new-features-php"><a href="#有兴趣直接访问官网-http-php-net-manual-zh-migration70-new-features-php" class="headerlink" title="有兴趣直接访问官网 http://php.net/manual/zh/migration70.new-features.php"></a>有兴趣直接访问官网 <a href="http://php.net/manual/zh/migration70.new-features.php" target="_blank" rel="noopener">http://php.net/manual/zh/migration70.new-features.php</a></h4>
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+            <div class="shang_tit">
+              <p>纯属好玩</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫">
+            </div>
+              <div class="pay_explain">扫码打赏，你说多少就多少</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝"></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信"></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/05/27/闲谈-PHP7新特性/">闲谈 PHP7新特性</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 启码匠 的个人博客">启码匠</a></p>
+        <p><span>发布时间:</span>2017年05月27日 - 21时09分</p>
+        <p><span>最后更新:</span>2018年12月31日 - 15时40分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/05/27/闲谈-PHP7新特性/" title="闲谈 PHP7新特性">https://qimajiang.com/2017/05/27/闲谈-PHP7新特性/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://qimajiang.com/2017/05/27/闲谈-PHP7新特性/　　作者: 启码匠" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target="_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2017/06/13/手把手教你用-PHP-拼接微信好友头像/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          手把手教你用 PHP 拼接微信好友头像
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/04/使用-ngrok-实现内网穿透/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">使用 ngrok 实现内网穿透</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0、可变参数"><span class="toc-number">1.</span> <span class="toc-text">0、可变参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP7允许传入可变个数的同类型参数"><span class="toc-number">1.1.</span> <span class="toc-text">PHP7允许传入可变个数的同类型参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#输出"><span class="toc-number">1.2.</span> <span class="toc-text">输出</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1、标量类型声明"><span class="toc-number">2.</span> <span class="toc-text">1、标量类型声明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#标量类型声明-有两种模式-强制-默认-和-严格模式。-现在可以使用下列类型参数（无论用强制模式还是严格模式）：-字符串-string-整数-int-浮点数-float-以及布尔值-bool-。它们扩充了PHP5中引入的其他类型：类名，接口，数组和-回调类型。"><span class="toc-number">2.1.</span> <span class="toc-text">标量类型声明 有两种模式: 强制 (默认) 和 严格模式。 现在可以使用下列类型参数（无论用强制模式还是严格模式）： 字符串(string), 整数 (int), 浮点数 (float), 以及布尔值 (bool)。它们扩充了PHP5中引入的其他类型：类名，接口，数组和 回调类型。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#输出-1"><span class="toc-number">2.2.</span> <span class="toc-text">输出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#要使用严格模式需要在文件顶部添加-declare-strict-types-1-在严格模式中，只有一个与类型声明完全相符的变量才会被接受，否则将会抛出一个TypeError。-严格类型仅用于标量类型声明，也正是因为如此，这需要PHP-7-0-0-或更新版本，因为标量类型声明也是在那个版本中添加的。"><span class="toc-number">2.3.</span> <span class="toc-text">要使用严格模式需要在文件顶部添加 declare(strict_types=1);在严格模式中，只有一个与类型声明完全相符的变量才会被接受，否则将会抛出一个TypeError。  严格类型仅用于标量类型声明，也正是因为如此，这需要PHP 7.0.0 或更新版本，因为标量类型声明也是在那个版本中添加的。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#输出-2"><span class="toc-number">2.4.</span> <span class="toc-text">输出</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、函数返回类型声明"><span class="toc-number">3.</span> <span class="toc-text">3、函数返回类型声明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP-7-增加了对返回类型声明的支持。函数返回值的类型必须与声明的类型一致，-否则会抛出错误。"><span class="toc-number">3.1.</span> <span class="toc-text">PHP 7 增加了对返回类型声明的支持。函数返回值的类型必须与声明的类型一致， 否则会抛出错误。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#输出-3"><span class="toc-number">3.2.</span> <span class="toc-text">输出</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、null合并运算符"><span class="toc-number">4.</span> <span class="toc-text">3、null合并运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP7中添加了null合并运算符-这个语法糖。如果变量存在且值不为NULL，-它就会返回自身的值，否则返回它的第二个操作数。"><span class="toc-number">4.1.</span> <span class="toc-text">PHP7中添加了null合并运算符 (??) 这个语法糖。如果变量存在且值不为NULL， 它就会返回自身的值，否则返回它的第二个操作数。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、太空船操作符（组合比较符）"><span class="toc-number">5.</span> <span class="toc-text">4、太空船操作符（组合比较符）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#太空船操作符用于比较两个表达式。当-a小于、等于或大于-b时它分别返回-1、0或1。"><span class="toc-number">5.1.</span> <span class="toc-text">太空船操作符用于比较两个表达式。当$a小于、等于或大于$b时它分别返回-1、0或1。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、通过-define-定义常量数组"><span class="toc-number">6.</span> <span class="toc-text">5、通过 define() 定义常量数组</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP7中Array-类型的常量现在可以通过-define-来定义。在-PHP5-6-中仅能通过-const-定义。"><span class="toc-number">6.1.</span> <span class="toc-text">PHP7中Array 类型的常量现在可以通过 define() 来定义。在 PHP5.6 中仅能通过 const 定义。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、匿名类"><span class="toc-number">7.</span> <span class="toc-text">5、匿名类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP7支持通过new-class-来实例化一个匿名类，这可以用来替代一些“用后即焚”的完整类定义。"><span class="toc-number">7.1.</span> <span class="toc-text">PHP7支持通过new class 来实例化一个匿名类，这可以用来替代一些“用后即焚”的完整类定义。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、use-批量声明"><span class="toc-number">8.</span> <span class="toc-text">6、use 批量声明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP-7-中-use-可以在一句话中声明多个类或函数或-const-了："><span class="toc-number">8.1.</span> <span class="toc-text">PHP 7 中 use 可以在一句话中声明多个类或函数或 const 了：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#但还是要写出每个类或函数或-const-的名称（并没有像-python-一样的-from-some-import-的方法）。需要留意的问题是：如果你使用的是基于-composer-和-PSR-4-的框架，这种写法是否能成功的加载类文件？其实是可以的，composer-注册的自动加载方法是在类被调用的时候根据类的命名空间去查找位置，这种写法对其没有影响。"><span class="toc-number">8.2.</span> <span class="toc-text">但还是要写出每个类或函数或 const 的名称（并没有像 python 一样的 from some import * 的方法）。需要留意的问题是：如果你使用的是基于 composer 和 PSR-4 的框架，这种写法是否能成功的加载类文件？其实是可以的，composer 注册的自动加载方法是在类被调用的时候根据类的命名空间去查找位置，这种写法对其没有影响。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7、其他特性"><span class="toc-number">9.</span> <span class="toc-text">7、其他特性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#其他的特性包括但不限于"><span class="toc-number">9.1.</span> <span class="toc-text">其他的特性包括但不限于</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#有兴趣直接访问官网-http-php-net-manual-zh-migration70-new-features-php"><span class="toc-number">9.2.</span> <span class="toc-text">有兴趣直接访问官网 http://php.net/manual/zh/migration70.new-features.php</span></a></li></ol></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <div id="gitments"></div>
+<script src="/js/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+      id:  '闲谈 PHP7新特性',
+      owner: 'moxun33',
+      repo: 'moxun33.github.io',
+      oauth: {
+        client_id: 'b7d60b111f8dd152f6f9',
+        client_secret: 'd9e941da2e552874785b833e84f43b7534a7527d',
+      },
+    })
+    gitment.render('gitments')
+</script>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/06/13/手把手教你用-PHP-拼接微信好友头像/" title="上一篇: 手把手教你用 PHP 拼接微信好友头像">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2017/04/04/使用-ngrok-实现内网穿透/" title="下一篇: 使用 ngrok 实现内网穿透">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/11/21/React应用优化/">React应用优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/25/浏览器持久化存储那些事/">浏览器持久化存储那些事</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/14/使用React一年的简单总结/">使用React一年的简单总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/21/TypeScript开发笔记/">TypeScript开发笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/28/TypeScript 与 React /">TypeScript 与 React</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/24/使用 Eslint 和 Prettier美化 React 代码/">使用 ESLint、Prettier 和 StyleLint美化 React 代码</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/19/SVG入门与实践/">SVG入门与实践</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/25/搭建前端异常监控服务/">搭建前端异常监控系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/24/构建企业内部React组件库/">构建企业内部React组件库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/10/前端PDF预览那些事/">前端预览PDF那些事</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/28/开发一个美剧自动嗅探下载器-TVDragon-下/">开发一个美剧自动嗅探下载器:TVDragon(下)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/16/开发一个美剧自动嗅探下载器-上-/">开发一个美剧自动嗅探下载器:TVDragon(上)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/18/使用 Goutte爬取代理 IP 池/">使用 Goutte爬取 IP 代理池</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/28/使用Jenkins自动部署React前端项目/">使用Jenkins自动部署React前端项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/21/React开发笔记/">React开发笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/03/mac下使用Vagrant-构建跨平台开发环境/">mac 下使用Vagrant 构建跨平台开发环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/18/web 的几种通信方式/">web 的几种通信方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/08/聊聊-web-中的网络请求/">聊聊 web 中的网络请求</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/13/手把手教你用-PHP-拼接微信好友头像/">手把手教你用 PHP 拼接微信好友头像</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/27/闲谈-PHP7新特性/">闲谈 PHP7新特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/04/使用-ngrok-实现内网穿透/">使用 ngrok 实现内网穿透</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/18/postgresql-数据库笔记/">postgresql 数据库笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/25/PHP工匠历险记-开启篇-一、搭建PHP开发环境/">搭建PHP开发环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/25/树莓派搭建反向代理，实现远程管理/">树莓派搭建反向代理，实现远程管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/21/objective-c初学笔记/">objective-c初学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/20/web-入门必看指南/">web 入门必看指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/20/mac下-搭建Cordova-ionic-AngularJs开发环境/">mac下 搭建Cordova+ionic+AngularJs开发环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/18/树莓派3安装-Docker记录/">树莓派3安装 Docker记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/17/hexo-常用命令/">hexo常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/23/Thinkphp微信支付开发坑/">Thinkphp微信支付开发坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/23/ubuntu64位安装32位依赖库，并安装njit-client/">ubuntu64位安装32位依赖库，并安装njit-client</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/七牛云和又拍云的比较/">七牛云和又拍云的比较</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/MAC环境下用Clover制作原版安装U盘/">MAC环境下用Clover制作原版安装U盘</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/20/editormd/">editormd 的使用介绍</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+        
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2018 启码匠
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+    </div>
+    <script>
+            (function(){
+                var bp = document.createElement('script');
+                var curProtocol = window.location.protocol.split(':')[0];
+                if (curProtocol === 'https') {
+                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+                }
+                else {
+                    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+                }
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(bp, s);
+            })();
+            </script>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 20;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  <script type="text/javascript">
+    window.onload = function(){
+      document.getElementById("search").onclick = function(){
+          console.log("search")
+          search();
+      }
+    }
+    function search(){
+      (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+      (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+      e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+      })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+      _st('install','A1Pz-LKMXbrzcFg2FWi6','2.0.0');
+    }
+  </script>
+
+  </div>
+</body>
+</html>
