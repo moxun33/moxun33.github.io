@@ -37,7 +37,7 @@
 <li>减少构建搜索或编译路径</li>
 <li>缓存与增量构建:<code>babel-loader</code>可以缓存处理过的模块，对于没有修改过的文件不会再重新编译，<code>cacheDirectory</code>有着2倍以上的速度提升，这对于rebuild 有着非常大的性能提升。</li>
 </ul>
-<h1 id="二、React运行优化"><a href="#二、React运行优化" class="headerlink" title="二、React运行优化"></a>二、React运行优化</h1>]]></content>
+<h1 id="二、React运行优化"><a href="#二、React运行优化" class="headerlink" title="二、React运行优化"></a>二、React运行优化</h1><h2 id="1、"><a href="#1、" class="headerlink" title="1、"></a>1、</h2>]]></content>
       
         
         <tags>
