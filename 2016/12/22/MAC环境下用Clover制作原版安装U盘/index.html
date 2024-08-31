@@ -1,580 +1,359 @@
-<!DOCTYPE html>
-<html>
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-  <title>MAC环境下用Clover制作原版安装U盘 | 启码匠 - 磨刀霍霍向编程</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文介绍如何制作黑苹果的U盘镜像">
-<meta name="keywords" content="MAC OSX86,Clover,U盘">
-<meta property="og:type" content="article">
-<meta property="og:title" content="MAC环境下用Clover制作原版安装U盘">
-<meta property="og:url" content="https://qimajiang.com/2016/12/22/MAC环境下用Clover制作原版安装U盘/index.html">
-<meta property="og:site_name" content="启码匠 - 磨刀霍霍向编程">
-<meta property="og:description" content="本文介绍如何制作黑苹果的U盘镜像">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://app.yinxiang.com/shard/s43/res/690f6ffc-8e3f-4861-8988-0657d4ec5d28">
-<meta property="og:image" content="https://app.yinxiang.com/shard/s43/res/4ed33835-22b1-4cfc-9dd4-141be57479fe">
-<meta property="og:image" content="https://app.yinxiang.com/shard/s43/res/8b90d831-b44e-4e2c-bf36-1da48cc16089">
-<meta property="og:image" content="https://app.yinxiang.com/shard/s43/res/3a955afe-1e77-4047-97b1-5c315706b604">
-<meta property="og:image" content="https://app.yinxiang.com/shard/s43/res/0115fea2-e8c4-451f-83f5-c678594b7d37">
-<meta property="og:image" content="https://app.yinxiang.com/shard/s43/res/056bb752-99bc-4a23-9366-4c48034dfecd">
-<meta property="og:updated_time" content="2018-12-31T07:40:43.354Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MAC环境下用Clover制作原版安装U盘">
-<meta name="twitter:description" content="本文介绍如何制作黑苹果的U盘镜像">
-<meta name="twitter:image" content="https://app.yinxiang.com/shard/s43/res/690f6ffc-8e3f-4861-8988-0657d4ec5d28">
-  
-    <link rel="alternative" href="/atom.xml" title="启码匠 - 磨刀霍霍向编程" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/img/favicon.png">
-  
-  
-      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  
-  
-      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  
-  <!-- 加载特效 -->
-    <script src="/js/pace.js"></script>
-    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet">
-  <script>
-      var yiliaConfig = {
-          rootUrl: '/',
-          fancybox: true,
-          animate: true,
-          isHome: false,
-          isPost: true,
-          isArchive: false,
-          isTag: false,
-          isCategory: false,
-          open_in_new: true
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>MAC环境下用Clover制作原版安装U盘 | 7码几盎 - 磨刀霍霍向编程</title><meta name="keywords" content="MAC OSX86,Clover,U盘"><meta name="author" content="7码几盎"><meta name="copyright" content="7码几盎"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="MAC环境下用Clover制作原版安装U盘"><meta name="application-name" content="MAC环境下用Clover制作原版安装U盘"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="MAC环境下用Clover制作原版安装U盘"><meta property="og:url" content="https://qimajiang.330030.xyz/2016/12/22/MAC%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%94%A8Clover%E5%88%B6%E4%BD%9C%E5%8E%9F%E7%89%88%E5%AE%89%E8%A3%85U%E7%9B%98/index.html"><meta property="og:site_name" content="7码几盎 - 磨刀霍霍向编程"><meta property="og:description" content="本文介绍如何制作黑苹果的U盘镜像   ###一、模板电脑的硬件概览###二、准备工作1、mac 系统环境，白苹果、黑屏或虚拟机都行。2、UniBeast 工具（到https:&amp;#x2F;&amp;#x2F;www.tonymacx86.com上下载）3、 MultiBeast 工具(官网 http:&amp;#x2F;&amp;#x2F;www.multibe"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg"><meta property="article:author" content="7码几盎"><meta property="article:tag" content="7码几盎, PHP, React, Vue, 爬虫， 博客， Hexo, 主题, Node, iOS。"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg"><meta name="description" content="本文介绍如何制作黑苹果的U盘镜像   ###一、模板电脑的硬件概览###二、准备工作1、mac 系统环境，白苹果、黑屏或虚拟机都行。2、UniBeast 工具（到https:&amp;#x2F;&amp;#x2F;www.tonymacx86.com上下载）3、 MultiBeast 工具(官网 http:&amp;#x2F;&amp;#x2F;www.multibe"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://qimajiang.330030.xyz/2016/12/22/MAC%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%94%A8Clover%E5%88%B6%E4%BD%9C%E5%8E%9F%E7%89%88%E5%AE%89%E8%A3%85U%E7%9B%98/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2023/09/03/125766904/ee23df8517f3c3e3efc4145658269c06_5714860933110284659.png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: 7码几盎","link":"链接: ","source":"来源: 7码几盎 - 磨刀霍霍向编程","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: '7码几盎 - 磨刀霍霍向编程',
+  title: 'MAC环境下用Clover制作原版安装U盘',
+  postAI: '',
+  pageFillDescription: '本文介绍如何制作黑苹果的盘镜像一模板电脑的硬件概览二准备工作系统环境白苹果黑屏或虚拟机都行工具到上下载工具官网系统安装镜像以上的盘三制作过程注册登录搜索下载系统安装装包或者到网上下载镜像解压出安装包两者基本没什么区别系统下载完成后把系统安装包复制到应用程序目录下从下载的跳过此步把系统的语言设置成英语工具只支持英语环境点击电脑左上角的苹果标志选择系统偏好设置选择语言和地区选中英语网上拉如图然后注销用户重新登录即可把系统语言更改为英语格式化盘插入盘打开磁盘工具选中目标盘点击按钮命名的名称稍后可以重命名格式化的格式选择分区选择点击格式化完成后退出盘制作打开工具点击在目标选择处选择然后选择在选择安装系统处选择然后点击在启动项选择界面选择电脑主板支持或者可选在显卡配置界面选择你需要的配置然后点击验证安装选项然后点击输入系统密码点击开始制作整个过程需要花费一定的时间慢慢等待吧四主板设置',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2018-12-31 15:40:43',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
       }
-  </script>
-</head></html>
-<body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-    <header id="header" class="inner">
-        <a href="/" class="profilepic">
-            
-            <img lazy-src="/img/head.png" class="js-avatar">
-            
-        </a>
-
-        <hgroup>
-          <h1 class="header-author"><a href="/" title="Hi Mate">启码匠</a></h1>
-        </hgroup>
-
-        
-        <p class="header-subtitle">磨刀霍霍向编程</p>
-        
-        
-            <form>
-                <input type="text" class="st-default-search-input search" id="search" placeholder=" Search...">
-            </form>
-        
-        
-            <div id="switch-btn" class="switch-btn">
-                <div class="icon">
-                    <div class="icon-ctn">
-                        <div class="icon-wrap icon-house" data-idx="0">
-                            <div class="birdhouse"></div>
-                            <div class="birdhouse_holes"></div>
-                        </div>
-                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
-                            <div class="ribbon"></div>
-                        </div>
-                        
-                        <div class="icon-wrap icon-link hide" data-idx="2">
-                            <div class="loopback_l"></div>
-                            <div class="loopback_r"></div>
-                        </div>
-                        
-                        
-                        <div class="icon-wrap icon-me hide" data-idx="3">
-                            <div class="user"></div>
-                            <div class="shoulder"></div>
-                        </div>
-                        
-                    </div>
-                    
-                </div>
-                <div class="tips-box hide">
-                    <div class="tips-arrow"></div>
-                    <ul class="tips-inner">
-                        <li>菜单</li>
-                        <li>标签</li>
-                        
-                        <li>友情链接</li>
-                        
-                        
-                        <li>关于我</li>
-                        
-                    </ul>
-                </div>
-            </div>
-        
-
-        <div id="switch-area" class="switch-area">
-            <div class="switch-wrap">
-                <section class="switch-part switch-part1">
-                    <nav class="header-menu">
-                        <ul>
-                        
-                            <li><a href="/Home">博客首页</a></li>
-                        
-                            <li><a href="/tags">标签云</a></li>
-                        
-                            <li><a href="/about">关于我</a></li>
-                        
-                        </ul>
-                    </nav>
-                    <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fl mail" target="_blank" href="mailto:&#109;&#120;&#120;&#48;&#56;&#48;&#55;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;" title="mail">mail</a>
-                            
-                                <a class="fl github" target="_blank" href="https://github.com/moxun33" title="github">github</a>
-                            
-                        </ul>
-                    </nav>
-                </section>
-                
-                
-                <section class="switch-part switch-part2">
-                    <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Babel/" style="font-size: 10px;">Babel</a> <a href="/tags/Clover/" style="font-size: 10px;">Clover</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/ESLint/" style="font-size: 10px;">ESLint</a> <a href="/tags/Goutte/" style="font-size: 10px;">Goutte</a> <a href="/tags/Homestead/" style="font-size: 10px;">Homestead</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/LAMP/" style="font-size: 10px;">LAMP</a> <a href="/tags/MAC-OSX86/" style="font-size: 10px;">MAC OSX86</a> <a href="/tags/Object-C/" style="font-size: 10px;">Object C</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/PHP/" style="font-size: 18px;">PHP</a> <a href="/tags/PHP7/" style="font-size: 10px;">PHP7</a> <a href="/tags/PostgreSQL/" style="font-size: 10px;">PostgreSQL</a> <a href="/tags/Prettier/" style="font-size: 10px;">Prettier</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/SVG/" style="font-size: 10px;">SVG</a> <a href="/tags/ThinkPHP/" style="font-size: 10px;">ThinkPHP</a> <a href="/tags/TypeScript/" style="font-size: 12px;">TypeScript</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/U盘/" style="font-size: 10px;">U盘</a> <a href="/tags/Vagrant/" style="font-size: 10px;">Vagrant</a> <a href="/tags/Webpack/" style="font-size: 10px;">Webpack</a> <a href="/tags/autossh/" style="font-size: 10px;">autossh</a> <a href="/tags/editor-md/" style="font-size: 10px;">editor.md</a> <a href="/tags/hexo命令/" style="font-size: 10px;">hexo命令</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/mac系统/" style="font-size: 10px;">mac系统</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/ngrok/" style="font-size: 10px;">ngrok</a> <a href="/tags/web/" style="font-size: 14px;">web</a> <a href="/tags/七牛云/" style="font-size: 10px;">七牛云</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/入门指南/" style="font-size: 10px;">入门指南</a> <a href="/tags/内网穿透/" style="font-size: 10px;">内网穿透</a> <a href="/tags/前端/" style="font-size: 16px;">前端</a> <a href="/tags/又拍云/" style="font-size: 10px;">又拍云</a> <a href="/tags/反向代理/" style="font-size: 10px;">反向代理</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/开发环境/" style="font-size: 10px;">开发环境</a> <a href="/tags/微信/" style="font-size: 12px;">微信</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/树莓派-raspberrypi/" style="font-size: 12px;">树莓派 raspberrypi</a> <a href="/tags/浏览器/" style="font-size: 10px;">浏览器</a> <a href="/tags/爬虫/" style="font-size: 14px;">爬虫</a> <a href="/tags/监控/" style="font-size: 10px;">监控</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a>
-                    </div>
-                </section>
-                
-                
-                
-                <section class="switch-part switch-part3">
-                    <div id="js-friends">
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxun33.github.io/">name</a>
-                    
-                    </div>
-                </section>
-                
-
-                
-                
-                <section class="switch-part switch-part4">
-                
-                    <div id="js-aboutme">专注后端开发和前端开发，偶尔搞搞 iOS 开发，不会拘泥现有的开发要素，热衷研究新技术(语言)，偶尔写文。</div>
-                </section>
-                
-            </div>
-        </div>
-    </header>                
-</div>
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-      <div class="overlay">
-          <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">启码匠</a></h1>
-      </div>
-    <div class="intrude-less">
-        <header id="header" class="inner">
-            <a href="/" class="profilepic">
-                
-                    <img lazy-src="/img/head.png" class="js-avatar">
-                
-            </a>
-            <hgroup>
-              <h1 class="header-author"><a href="/" title="Me">启码匠</a></h1>
-            </hgroup>
-            
-            <p class="header-subtitle">磨刀霍霍向编程</p>
-            
-            <nav class="header-menu">
-                <ul>
-                
-                    <li><a href="/Home">博客首页</a></li>
-                
-                    <li><a href="/tags">标签云</a></li>
-                
-                    <li><a href="/about">关于我</a></li>
-                
-                <div class="clearfix"></div>
-                </ul>
-            </nav>
-            <nav class="header-nav">
-                <div class="social">
-                    
-                        <a class="mail" target="_blank" href="mailto:&#109;&#120;&#120;&#48;&#56;&#48;&#55;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;" title="mail">mail</a>
-                    
-                        <a class="github" target="_blank" href="https://github.com/moxun33" title="github">github</a>
-                    
-                </div>
-            </nav>
-        </header>                
-    </div>
-</nav>
-      <div class="body-wrap"><article id="post-MAC环境下用Clover制作原版安装U盘" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/12/22/MAC环境下用Clover制作原版安装U盘/" class="article-date">
-      <time datetime="2016-12-22T02:02:45.000Z" itemprop="datePublished">2016-12-22</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      MAC环境下用Clover制作原版安装U盘
-    </h1>
-  
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
 
-      </header>
-      
-      <div class="article-info article-info-post">
-        
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
 
-        
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Clover/">Clover</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MAC-OSX86/">MAC OSX86</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/U盘/">U盘</a></li></ul>
-    </div>
-
-        <div class="clearfix"></div>
-      </div>
-      
+        document.head.appendChild(script)
+      })
     
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <ul>
-<li>本文介绍如何制作黑苹果的U盘镜像<a id="more"></a>
-</li>
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">7码几盎 - 磨刀霍霍向编程</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Babel/" style="font-size: 1.05rem;">Babel<sup>1</sup></a><a href="/tags/Clover/" style="font-size: 1.05rem;">Clover<sup>1</sup></a><a href="/tags/ESLint/" style="font-size: 1.05rem;">ESLint<sup>1</sup></a><a href="/tags/Goutte/" style="font-size: 1.05rem;">Goutte<sup>1</sup></a><a href="/tags/Homestead/" style="font-size: 1.05rem;">Homestead<sup>1</sup></a><a href="/tags/Jenkins/" style="font-size: 1.05rem;">Jenkins<sup>1</sup></a><a href="/tags/LAMP/" style="font-size: 1.05rem;">LAMP<sup>1</sup></a><a href="/tags/MAC-OSX86/" style="font-size: 1.05rem;">MAC OSX86<sup>1</sup></a><a href="/tags/Object-C/" style="font-size: 1.05rem;">Object C<sup>1</sup></a><a href="/tags/PDF/" style="font-size: 1.05rem;">PDF<sup>1</sup></a><a href="/tags/PHP/" style="font-size: 1.05rem;">PHP<sup>5</sup></a><a href="/tags/PostgreSQL/" style="font-size: 1.05rem;">PostgreSQL<sup>1</sup></a><a href="/tags/Prettier/" style="font-size: 1.05rem;">Prettier<sup>1</sup></a><a href="/tags/React/" style="font-size: 1.05rem;">React<sup>8</sup></a><a href="/tags/SVG/" style="font-size: 1.05rem;">SVG<sup>1</sup></a><a href="/tags/ThinkPHP/" style="font-size: 1.05rem;">ThinkPHP<sup>1</sup></a><a href="/tags/TypeScript/" style="font-size: 1.05rem;">TypeScript<sup>2</sup></a><a href="/tags/Ubuntu/" style="font-size: 1.05rem;">Ubuntu<sup>1</sup></a><a href="/tags/U%E7%9B%98/" style="font-size: 1.05rem;">U盘<sup>1</sup></a><a href="/tags/Vagrant/" style="font-size: 1.05rem;">Vagrant<sup>1</sup></a><a href="/tags/Webpack/" style="font-size: 1.05rem;">Webpack<sup>1</sup></a><a href="/tags/editor-md/" style="font-size: 1.05rem;">editor.md<sup>1</sup></a><a href="/tags/hexo%E5%91%BD%E4%BB%A4/" style="font-size: 1.05rem;">hexo命令<sup>1</sup></a><a href="/tags/iOS/" style="font-size: 1.05rem;">iOS<sup>1</sup></a><a href="/tags/mac%E7%B3%BB%E7%BB%9F/" style="font-size: 1.05rem;">mac系统<sup>1</sup></a><a href="/tags/markdown/" style="font-size: 1.05rem;">markdown<sup>1</sup></a><a href="/tags/ngrok/" style="font-size: 1.05rem;">ngrok<sup>1</sup></a><a href="/tags/web/" style="font-size: 1.05rem;">web<sup>3</sup></a><a href="/tags/%E4%B8%83%E7%89%9B%E4%BA%91/" style="font-size: 1.05rem;">七牛云<sup>1</sup></a><a href="/tags/%E4%BC%98%E5%8C%96/" style="font-size: 1.05rem;">优化<sup>1</sup></a><a href="/tags/%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/" style="font-size: 1.05rem;">入门指南<sup>1</sup></a><a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" style="font-size: 1.05rem;">内网穿透<sup>1</sup></a><a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 1.05rem;">前端<sup>4</sup></a><a href="/tags/%E5%8F%88%E6%8B%8D%E4%BA%91/" style="font-size: 1.05rem;">又拍云<sup>1</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 1.05rem;">工具<sup>1</sup></a><a href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" style="font-size: 1.05rem;">开发环境<sup>1</sup></a><a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 1.05rem;">微信<sup>2</sup></a><a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 1.05rem;">总结<sup>1</sup></a><a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 1.05rem;">爬虫<sup>3</sup></a><a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 1.05rem;">笔记<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2018/11/"><span class="card-archive-list-date">十一月 2018</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2018/10/"><span class="card-archive-list-date">十月 2018</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2018/09/"><span class="card-archive-list-date">九月 2018</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2018/08/"><span class="card-archive-list-date">八月 2018</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2018/07/"><span class="card-archive-list-date">七月 2018</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2018/06/"><span class="card-archive-list-date">六月 2018</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2018/05/"><span class="card-archive-list-date">五月 2018</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2018/04/"><span class="card-archive-list-date">四月 2018</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="article-meta tags"><a class="article-meta__tags" href="/tags/MAC-OSX86/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>MAC OSX86</span></a><a class="article-meta__tags" href="/tags/Clover/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Clover</span></a><a class="article-meta__tags" href="/tags/U%E7%9B%98/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>U盘</span></a></span></div></div><h1 class="post-title" itemprop="name headline">MAC环境下用Clover制作原版安装U盘</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2016-12-22T02:02:45.000Z" title="发表于 2016-12-22 10:02:45">2016-12-22</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2018-12-31T07:40:43.000Z" title="更新于 2018-12-31 15:40:43">2018-12-31</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为长沙"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>长沙</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src=""></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://qimajiang.330030.xyz/2016/12/22/MAC%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%94%A8Clover%E5%88%B6%E4%BD%9C%E5%8E%9F%E7%89%88%E5%AE%89%E8%A3%85U%E7%9B%98/"><header><a href="/tags/MAC-OSX86/" tabindex="-1" itemprop="url">MAC OSX86</a><a href="/tags/Clover/" tabindex="-1" itemprop="url">Clover</a><a href="/tags/U%E7%9B%98/" tabindex="-1" itemprop="url">U盘</a><h1 id="CrawlerTitle" itemprop="name headline">MAC环境下用Clover制作原版安装U盘</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">7码几盎</span><time itemprop="dateCreated datePublished" datetime="2016-12-22T02:02:45.000Z" title="发表于 2016-12-22 10:02:45">2016-12-22</time><time itemprop="dateCreated datePublished" datetime="2018-12-31T07:40:43.000Z" title="更新于 2018-12-31 15:40:43">2018-12-31</time></header><ul>
+<li>本文介绍如何制作黑苹果的U盘镜像 <span id="more"></span></li>
 </ul>
-<p>###一、模板电脑的硬件概览<br><img src="https://app.yinxiang.com/shard/s43/res/690f6ffc-8e3f-4861-8988-0657d4ec5d28" alt="enter image description here"></p>
-<p>###二、准备工作<br>1、mac 系统环境，白苹果、黑屏或虚拟机都行。<br>2、UniBeast 工具（到<a href="https://www.tonymacx86.com上下载）" target="_blank" rel="noopener">https://www.tonymacx86.com上下载）</a><br>3、 MultiBeast 工具(官网 <a href="http://www.multibeast.com/" target="_blank" rel="noopener">http://www.multibeast.com/</a>)<br>4、 mac 系统安装镜像。<br>5、8G以上的 U盘。</p>
+<p>###一、模板电脑的硬件概览<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://app.yinxiang.com/shard/s43/res/690f6ffc-8e3f-4861-8988-0657d4ec5d28" alt="enter image description here"><br>###二、准备工作<br>1、mac 系统环境，白苹果、黑屏或虚拟机都行。<br>2、UniBeast 工具（到<a href="https://www.tonymacx86.com上下载)/">https://www.tonymacx86.com上下载）</a><br>3、 MultiBeast 工具(官网 <a href="http://www.multibeast.com/">http://www.multibeast.com/</a>)<br>4、 mac 系统安装镜像。<br>5、8G以上的 U盘。</p>
 <p>###三、制作过程<br>1、注册 App ID，登录 App Store，搜索macOS Sierra ，下载系统安装装包，或者到网上下载 DMG 镜像，解压出安装包。（两者基本没什么区别）。</p>
 <p>2、系统下载完成后，把系统安装包复制到Application(应用程序)目录下（从 App Store 下载的跳过此步）。</p>
-<p>3、把系统的语言设置成英语，UniBeast 工具只支持英语环境。点击电脑左上角的苹果标志=》选择“系统偏好设置”=》选择“语言和地区”=》选中“英语”网上拉，如图：</p>
-<p>然后注销用户，重新登录，即可把系统语言更改为英语。<br><img src="https://app.yinxiang.com/shard/s43/res/4ed33835-22b1-4cfc-9dd4-141be57479fe" alt="enter image description here"><br>4、格式化 U盘<br>（1）插入 U盘，打开“磁盘工具”，选中目标 U盘<br><img src="https://app.yinxiang.com/shard/s43/res/8b90d831-b44e-4e2c-bf36-1da48cc16089" alt="enter image description here"><br>（2） 点击 Erase 按钮，命名 USB 的名称（稍后可以重命名），格式化的格式选择  OS X Extended (Journaled) ，分区选择  GUID Partition Map<br><img src="https://app.yinxiang.com/shard/s43/res/3a955afe-1e77-4047-97b1-5c315706b604" alt="enter image description here"><br>（3）点击 Erase ，格式化完成后退出。</p>
-<p>5、U盘制作<br>（1）打开 UniBeast 工具，点击 Continue, Continue, Continue, Continue, Agree<br>（2）在目标选择处，选择 USB ，然后选择 Continue 。<br><img src="https://app.yinxiang.com/shard/s43/res/0115fea2-e8c4-451f-83f5-c678594b7d37" alt="enter image description here"><br>（3）在选择安装系统处，选择 Sierra 然后点击 Continue 。<br>（4） 在启动项选择界面选择 UEFI Boot Mode（电脑主板支持 EFI） 或者Legacy Boot Mode.<br><a href="https://app.yinxiang.com/shard/s43/res/8b3d355f-10a6-4059-b1d4-8dc986d7d913" target="_blank" rel="noopener">https://app.yinxiang.com/shard/s43/res/8b3d355f-10a6-4059-b1d4-8dc986d7d913</a><br>（5）（可选）在显卡配置界面选择你需要的配置，然后点击 Continue<br>（6）验证安装选项，然后点击 Continue，输入系统密码，点击 Install。<br><a href="https://app.yinxiang.com/shard/s43/res/7b1d3211-df84-485d-b777-3b4307c048a2" target="_blank" rel="noopener">https://app.yinxiang.com/shard/s43/res/7b1d3211-df84-485d-b777-3b4307c048a2</a><br>（7）UniBeast 开始制作，整个过程需要花费一定的时间。慢慢等待吧。<br><a href="https://app.yinxiang.com/shard/s43/res/77124551-59bc-4cdf-86e3-4ec30fc04c63" target="_blank" rel="noopener">https://app.yinxiang.com/shard/s43/res/77124551-59bc-4cdf-86e3-4ec30fc04c63</a><br>四、主板设置<br>Disable Secure Boot<br>Disable VT for Direct I/O<br>Set Auto OS Recovery Threshold to OFF<br>Set SATA Operation to AHCI or Disabled<br>Optional: Disable Computrace<br>Optional: Enable Unobtrusive Mode<br>Optional: Enable USB PowerShare<br>Optional: Set Fn Lock Options to Lock Mode Enable/Seconda<br><img src="https://app.yinxiang.com/shard/s43/res/056bb752-99bc-4a23-9366-4c48034dfecd" alt="enter image description here"></p>
+<p>3、把系统的语言设置成英语，UniBeast 工具只支持英语环境。点击电脑左上角的苹果标志&#x3D;》选择“系统偏好设置”&#x3D;》选择“语言和地区”&#x3D;》选中“英语”网上拉，如图：</p>
+<p>然后注销用户，重新登录，即可把系统语言更改为英语。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://app.yinxiang.com/shard/s43/res/4ed33835-22b1-4cfc-9dd4-141be57479fe" alt="enter image description here"><br>4、格式化 U盘<br>（1）插入 U盘，打开“磁盘工具”，选中目标 U盘<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://app.yinxiang.com/shard/s43/res/8b90d831-b44e-4e2c-bf36-1da48cc16089" alt="enter image description here"><br>（2） 点击 Erase 按钮，命名 USB 的名称（稍后可以重命名），格式化的格式选择  OS X Extended (Journaled) ，分区选择  GUID Partition Map<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://app.yinxiang.com/shard/s43/res/3a955afe-1e77-4047-97b1-5c315706b604" alt="enter image description here"><br>（3）点击 Erase ，格式化完成后退出。</p>
+<p>5、U盘制作<br>（1）打开 UniBeast 工具，点击 Continue, Continue, Continue, Continue, Agree<br>（2）在目标选择处，选择 USB ，然后选择 Continue 。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://app.yinxiang.com/shard/s43/res/0115fea2-e8c4-451f-83f5-c678594b7d37" alt="enter image description here"><br>（3）在选择安装系统处，选择 Sierra 然后点击 Continue 。<br>（4） 在启动项选择界面选择 UEFI Boot Mode（电脑主板支持 EFI） 或者Legacy Boot Mode.<br><a href="https://app.yinxiang.com/shard/s43/res/8b3d355f-10a6-4059-b1d4-8dc986d7d913">https://app.yinxiang.com/shard/s43/res/8b3d355f-10a6-4059-b1d4-8dc986d7d913</a><br>（5）（可选）在显卡配置界面选择你需要的配置，然后点击 Continue<br>（6）验证安装选项，然后点击 Continue，输入系统密码，点击 Install。<br><a href="https://app.yinxiang.com/shard/s43/res/7b1d3211-df84-485d-b777-3b4307c048a2">https://app.yinxiang.com/shard/s43/res/7b1d3211-df84-485d-b777-3b4307c048a2</a><br>（7）UniBeast 开始制作，整个过程需要花费一定的时间。慢慢等待吧。<br><a href="https://app.yinxiang.com/shard/s43/res/77124551-59bc-4cdf-86e3-4ec30fc04c63">https://app.yinxiang.com/shard/s43/res/77124551-59bc-4cdf-86e3-4ec30fc04c63</a><br>四、主板设置<br>Disable Secure Boot<br>Disable VT for Direct I&#x2F;O<br>Set Auto OS Recovery Threshold to OFF<br>Set SATA Operation to AHCI or Disabled<br>Optional: Disable Computrace<br>Optional: Enable Unobtrusive Mode<br>Optional: Enable USB PowerShare<br>Optional: Set Fn Lock Options to Lock Mode Enable&#x2F;Seconda<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://app.yinxiang.com/shard/s43/res/056bb752-99bc-4a23-9366-4c48034dfecd" alt="enter image description here"></p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">7码几盎</div><div class="post-copyright__author_desc">磨刀霍霍向编程</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://qimajiang.330030.xyz/2016/12/22/MAC%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%94%A8Clover%E5%88%B6%E4%BD%9C%E5%8E%9F%E7%89%88%E5%AE%89%E8%A3%85U%E7%9B%98/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://qimajiang.330030.xyz/2016/12/22/MAC%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%94%A8Clover%E5%88%B6%E4%BD%9C%E5%8E%9F%E7%89%88%E5%AE%89%E8%A3%85U%E7%9B%98/')">MAC环境下用Clover制作原版安装U盘</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://qimajiang.330030.xyz/2016/12/22/MAC%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%94%A8Clover%E5%88%B6%E4%BD%9C%E5%8E%9F%E7%89%88%E5%AE%89%E8%A3%85U%E7%9B%98/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=MAC环境下用Clover制作原版安装U盘&amp;url=https://qimajiang.330030.xyz/2016/12/22/MAC%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%94%A8Clover%E5%88%B6%E4%BD%9C%E5%8E%9F%E7%89%88%E5%AE%89%E8%A3%85U%E7%9B%98/&amp;pic=" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://qimajiang.330030.xyz" target="_blank">7码几盎 - 磨刀霍霍向编程</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/MAC-OSX86/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>MAC OSX86<span class="tagsPageCount">1</span></a><a class="post-meta__box__tags" href="/tags/Clover/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Clover<span class="tagsPageCount">1</span></a><a class="post-meta__box__tags" href="/tags/U%E7%9B%98/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>U盘<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2016/11/20/editormd/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">editormd 的使用介绍</div></div></a></div><div class="next-post pull-right"><a href="/2017/01/22/%E4%B8%83%E7%89%9B%E4%BA%91%E5%92%8C%E5%8F%88%E6%8B%8D%E4%BA%91%E7%9A%84%E6%AF%94%E8%BE%83/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">七牛云和又拍云的比较</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description">学习如磨刀， 需要不断温故。</div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2018/11/21/React%E5%BA%94%E7%94%A8%E4%BC%98%E5%8C%96/" title="React应用优化">React应用优化</a><time datetime="2018-11-21T07:48:00.000Z" title="发表于 2018-11-21 15:48:00">2018-11-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2018/10/25/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8%E9%82%A3%E4%BA%9B%E4%BA%8B/" title="浏览器持久化存储那些事">浏览器持久化存储那些事</a><time datetime="2018-10-25T13:31:25.000Z" title="发表于 2018-10-25 21:31:25">2018-10-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2018/09/14/%E4%BD%BF%E7%94%A8React%E4%B8%80%E5%B9%B4%E7%9A%84%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93/" title="使用React一年的简单总结">使用React一年的简单总结</a><time datetime="2018-09-14T13:05:54.000Z" title="发表于 2018-09-14 21:05:54">2018-09-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2018/08/21/TypeScript%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/" title="TypeScript开发笔记">TypeScript开发笔记</a><time datetime="2018-08-21T14:11:36.000Z" title="发表于 2018-08-21 22:11:36">2018-08-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2018/07/28/TypeScript%20%E4%B8%8E%20React%20/" title="TypeScript 与 React">TypeScript 与 React</a><time datetime="2018-07-27T16:26:52.000Z" title="发表于 2018-07-28 00:26:52">2018-07-28</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2024 By <a class="footer-bar-link" href="/" title="7码几盎" target="_blank">7码几盎</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">34</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">47</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">0</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Babel/" style="font-size: 0.88rem;">Babel<sup>1</sup></a><a href="/tags/Clover/" style="font-size: 0.88rem;">Clover<sup>1</sup></a><a href="/tags/ESLint/" style="font-size: 0.88rem;">ESLint<sup>1</sup></a><a href="/tags/Goutte/" style="font-size: 0.88rem;">Goutte<sup>1</sup></a><a href="/tags/Homestead/" style="font-size: 0.88rem;">Homestead<sup>1</sup></a><a href="/tags/Jenkins/" style="font-size: 0.88rem;">Jenkins<sup>1</sup></a><a href="/tags/LAMP/" style="font-size: 0.88rem;">LAMP<sup>1</sup></a><a href="/tags/MAC-OSX86/" style="font-size: 0.88rem;">MAC OSX86<sup>1</sup></a><a href="/tags/Object-C/" style="font-size: 0.88rem;">Object C<sup>1</sup></a><a href="/tags/PDF/" style="font-size: 0.88rem;">PDF<sup>1</sup></a><a href="/tags/PHP/" style="font-size: 0.88rem;">PHP<sup>5</sup></a><a href="/tags/PostgreSQL/" style="font-size: 0.88rem;">PostgreSQL<sup>1</sup></a><a href="/tags/Prettier/" style="font-size: 0.88rem;">Prettier<sup>1</sup></a><a href="/tags/React/" style="font-size: 0.88rem;">React<sup>8</sup></a><a href="/tags/SVG/" style="font-size: 0.88rem;">SVG<sup>1</sup></a><a href="/tags/ThinkPHP/" style="font-size: 0.88rem;">ThinkPHP<sup>1</sup></a><a href="/tags/TypeScript/" style="font-size: 0.88rem;">TypeScript<sup>2</sup></a><a href="/tags/Ubuntu/" style="font-size: 0.88rem;">Ubuntu<sup>1</sup></a><a href="/tags/U%E7%9B%98/" style="font-size: 0.88rem;">U盘<sup>1</sup></a><a href="/tags/Vagrant/" style="font-size: 0.88rem;">Vagrant<sup>1</sup></a><a href="/tags/Webpack/" style="font-size: 0.88rem;">Webpack<sup>1</sup></a><a href="/tags/editor-md/" style="font-size: 0.88rem;">editor.md<sup>1</sup></a><a href="/tags/hexo%E5%91%BD%E4%BB%A4/" style="font-size: 0.88rem;">hexo命令<sup>1</sup></a><a href="/tags/iOS/" style="font-size: 0.88rem;">iOS<sup>1</sup></a><a href="/tags/mac%E7%B3%BB%E7%BB%9F/" style="font-size: 0.88rem;">mac系统<sup>1</sup></a><a href="/tags/markdown/" style="font-size: 0.88rem;">markdown<sup>1</sup></a><a href="/tags/ngrok/" style="font-size: 0.88rem;">ngrok<sup>1</sup></a><a href="/tags/web/" style="font-size: 0.88rem;">web<sup>3</sup></a><a href="/tags/%E4%B8%83%E7%89%9B%E4%BA%91/" style="font-size: 0.88rem;">七牛云<sup>1</sup></a><a href="/tags/%E4%BC%98%E5%8C%96/" style="font-size: 0.88rem;">优化<sup>1</sup></a><a href="/tags/%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/" style="font-size: 0.88rem;">入门指南<sup>1</sup></a><a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" style="font-size: 0.88rem;">内网穿透<sup>1</sup></a><a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 0.88rem;">前端<sup>4</sup></a><a href="/tags/%E5%8F%88%E6%8B%8D%E4%BA%91/" style="font-size: 0.88rem;">又拍云<sup>1</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 0.88rem;">工具<sup>1</sup></a><a href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" style="font-size: 0.88rem;">开发环境<sup>1</sup></a><a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 0.88rem;">微信<sup>2</sup></a><a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 0.88rem;">总结<sup>1</sup></a><a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 0.88rem;">爬虫<sup>3</sup></a><a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 0.88rem;">笔记<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.12",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
 
-      
-      
-        <div class="page-reward">
-          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
-          <div class="hide_box"></div>
-          <div class="shang_box">
-            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
-            <div class="shang_tit">
-              <p>纯属好玩</p>
-            </div>
-            <div class="shang_payimg">
-              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫">
-            </div>
-              <div class="pay_explain">扫码打赏，你说多少就多少</div>
-            <div class="shang_payselect">
-              
-                <div class="pay_item checked" data-id="alipay">
-                  <span class="radiobox"></span>
-                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝"></span>
-                </div>
-              
-              
-                <div class="pay_item" data-id="wechat">
-                  <span class="radiobox"></span>
-                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信"></span>
-                </div>
-              
-            </div>
-            <div class="shang_info">
-              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
-            </div>
-          </div>
-        </div>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
-        <script type="text/javascript">
-          $(".pay_item").click(function(){
-            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
-            var dataid=$(this).attr('data-id');
-            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
-            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
-          });
-          function dashangToggle(){
-            
-            $(".hide_box").fadeToggle();
-            $(".shang_box").fadeToggle();
-          }
-        </script>
-      
-    </div>
-    
-  </div>
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 7码几盎 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
   
-    
-    <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/12/22/MAC环境下用Clover制作原版安装U盘/">MAC环境下用Clover制作原版安装U盘</a></p>
-        <p><span>文章作者:</span><a href="/" title="访问 启码匠 的个人博客">启码匠</a></p>
-        <p><span>发布时间:</span>2016年12月22日 - 10时02分</p>
-        <p><span>最后更新:</span>2018年12月31日 - 15时40分</p>
-        <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/12/22/MAC环境下用Clover制作原版安装U盘/" title="MAC环境下用Clover制作原版安装U盘">https://qimajiang.com/2016/12/22/MAC环境下用Clover制作原版安装U盘/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://qimajiang.com/2016/12/22/MAC环境下用Clover制作原版安装U盘/　　作者: 启码匠" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
-            <script src="/js/clipboard.min.js"></script>
-            <script> var clipboard = new Clipboard('.copy-path'); </script>
-        </p>
-        <p>
-            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target="_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
-        </p>
-    </div>
-
-
-
-<nav id="article-nav">
-  
-    <a href="/2017/01/22/七牛云和又拍云的比较/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          七牛云和又拍云的比较
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2016/11/20/editormd/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">editormd 的使用介绍</div>
-      <strong class="article-nav-caption">></strong>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-    <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    
-</div>
-<input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
-
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-<script>
-    var valueHide = "隐藏目录";
-    var valueShow = "显示目录";
-
-    if ($(".left-col").is(":hidden")) {
-        $("#tocButton").attr("value", valueShow);
-    }
-    $("#tocButton").click(function() {
-        if ($("#toc").is(":hidden")) {
-            $("#tocButton").attr("value", valueHide);
-            $("#toc").slideDown(320);
-        }
-        else {
-            $("#tocButton").attr("value", valueShow);
-            $("#toc").slideUp(350);
-        }
-    })
-    if ($(".toc").length < 1) {
-        $("#toc, #tocButton").hide();
-    }
-</script>
-
-
-
-
-
-<div class="bdsharebuttonbox">
-	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
-	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
-	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
-</div>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-
-
-
-
-    
-        <div id="gitments"></div>
-<script src="/js/gitment.browser.js"></script>
-<script>
-    var gitment = new Gitment({
-      id:  'MAC环境下用Clover制作原版安装U盘',
-      owner: 'moxun33',
-      repo: 'moxun33.github.io',
-      oauth: {
-        client_id: 'b7d60b111f8dd152f6f9',
-        client_secret: 'd9e941da2e552874785b833e84f43b7534a7527d',
-      },
-    })
-    gitment.render('gitments')
-</script>
-
-    
-
-
-
-    <div class="scroll" id="post-nav-button">
-        
-            <a href="/2017/01/22/七牛云和又拍云的比较/" title="上一篇: 七牛云和又拍云的比较">
-                <i class="fa fa-angle-left"></i>
-            </a>
-        
-        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
-        
-            <a href="/2016/11/20/editormd/" title="下一篇: editormd 的使用介绍">
-                <i class="fa fa-angle-right"></i>
-            </a>
-        
-    </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/11/21/React应用优化/">React应用优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/25/浏览器持久化存储那些事/">浏览器持久化存储那些事</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/14/使用React一年的简单总结/">使用React一年的简单总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/21/TypeScript开发笔记/">TypeScript开发笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/28/TypeScript 与 React /">TypeScript 与 React</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/24/使用 Eslint 和 Prettier美化 React 代码/">使用 ESLint、Prettier 和 StyleLint美化 React 代码</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/19/SVG入门与实践/">SVG入门与实践</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/25/搭建前端异常监控服务/">搭建前端异常监控系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/24/构建企业内部React组件库/">构建企业内部React组件库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/10/前端PDF预览那些事/">前端预览PDF那些事</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/28/开发一个美剧自动嗅探下载器-TVDragon-下/">开发一个美剧自动嗅探下载器:TVDragon(下)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/16/开发一个美剧自动嗅探下载器-上-/">开发一个美剧自动嗅探下载器:TVDragon(上)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/18/使用 Goutte爬取代理 IP 池/">使用 Goutte爬取 IP 代理池</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/28/使用Jenkins自动部署React前端项目/">使用Jenkins自动部署React前端项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/21/React开发笔记/">React开发笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/03/mac下使用Vagrant-构建跨平台开发环境/">mac 下使用Vagrant 构建跨平台开发环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/18/web 的几种通信方式/">web 的几种通信方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/08/聊聊-web-中的网络请求/">聊聊 web 中的网络请求</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/13/手把手教你用-PHP-拼接微信好友头像/">手把手教你用 PHP 拼接微信好友头像</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/27/闲谈-PHP7新特性/">闲谈 PHP7新特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/04/使用-ngrok-实现内网穿透/">使用 ngrok 实现内网穿透</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/18/postgresql-数据库笔记/">postgresql 数据库笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/25/PHP工匠历险记-开启篇-一、搭建PHP开发环境/">搭建PHP开发环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/25/树莓派搭建反向代理，实现远程管理/">树莓派搭建反向代理，实现远程管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/21/objective-c初学笔记/">objective-c初学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/20/web-入门必看指南/">web 入门必看指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/20/mac下-搭建Cordova-ionic-AngularJs开发环境/">mac下 搭建Cordova+ionic+AngularJs开发环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/18/树莓派3安装-Docker记录/">树莓派3安装 Docker记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/17/hexo-常用命令/">hexo常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/23/Thinkphp微信支付开发坑/">Thinkphp微信支付开发坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/23/ubuntu64位安装32位依赖库，并安装njit-client/">ubuntu64位安装32位依赖库，并安装njit-client</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/七牛云和又拍云的比较/">七牛云和又拍云的比较</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/MAC环境下用Clover制作原版安装U盘/">MAC环境下用Clover制作原版安装U盘</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/20/editormd/">editormd 的使用介绍</a></li></ul>
-    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-    <script>
-        $(".post-list").addClass("toc-article");
-        $(".post-list-item a").attr("target","_blank");
-        $("#post-nav-button > a:nth-child(2)").click(function() {
-            $(".fa-bars, .fa-times").toggle();
-            $(".post-list").toggle(300);
-            if ($(".toc").length > 0) {
-                $("#toc, #tocButton").toggle(200, function() {
-                    if ($(".switch-area").is(":visible")) {
-                        $("#tocButton").attr("value", valueHide);
-                        }
-                    })
-            }
-            else {
-            }
-        })
-    </script>
-
-
-
-    <script>
-        
-    </script>
-</div>
-      <footer id="footer">
-        
-    <div class="outer">
-        <div id="footer-info">
-            <div class="footer-left">
-                &copy; 2018 启码匠
-            </div>
-            <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
-            </div>
-        </div>
-        
-    </div>
-    <script>
-            (function(){
-                var bp = document.createElement('script');
-                var curProtocol = window.location.protocol.split(':')[0];
-                if (curProtocol === 'https') {
-                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-                }
-                else {
-                    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-                }
-                var s = document.getElementsByTagName("script")[0];
-                s.parentNode.insertBefore(bp, s);
-            })();
-            </script>
-</footer>
-
-    </div>
-    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-<script src="/js/main.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            var backgroundnum = 20;
-            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
-            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
-            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
-        })
-    </script>
-
-
-
-
-
-<div class="scroll" id="scroll">
-    <a href="#"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
-</div>
-<script>
-    $(document).ready(function() {
-        if ($("#comments").length < 1) {
-            $("#scroll > a:nth-child(2)").hide();
-        };
-    })
-</script>
-
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-
-  <script language="javascript">
-    $(function() {
-        $("a[title]").each(function() {
-            var a = $(this);
-            var title = a.attr('title');
-            if (title == undefined || title == "") return;
-            a.data('title', title).removeAttr('title').hover(
-
-            function() {
-                var offset = a.offset();
-                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
-                    top: offset.top - a.outerHeight() - 15,
-                    left: offset.left + a.outerWidth()/2 + 1
-                }).fadeIn(function() {
-                    var pop = $(this);
-                    setTimeout(function() {
-                        pop.remove();
-                    }, pop.text().length * 800);
-                });
-            }, function() {
-                $("#anchortitlecontainer").remove();
-            });
-        });
-    });
-</script>
-
-
-  <script type="text/javascript">
-    window.onload = function(){
-      document.getElementById("search").onclick = function(){
-          console.log("search")
-          search();
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
       }
     }
-    function search(){
-      (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-      (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-      e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-      })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','A1Pz-LKMXbrzcFg2FWi6','2.0.0');
-    }
-  </script>
+  }
 
-  </div>
-</body>
-</html>
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
